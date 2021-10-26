@@ -1,3 +1,51 @@
-.detalhe-topbar{
-    border-left: 30px solid transparent;
+.topbar-detail{
+    border-bottom: 50px solid rgb(255, 255, 255);
+    border-right: 50px solid transparent;
+    height: 50px;
+}
+.topbar-router{
+    width: 85%;
+    max-width: 1500px;
+}
+.topbar-router > div{
+    color: white;
+    width: auto;
+    align-self: center;
+}
+.menu-mobile{
+    position: fixed;
+    margin-top: 50px !important;    
+    opacity: 0;
+    visibility: hidden;
+    height: 0%;
+    transition: opacity 1s, visibility 1s, height 1s;
+    overflow: hidden;
+}
+.show{
+    opacity: 1 ;
+    visibility: visible;
+    height: auto;
+    padding-bottom: 1.5rem;
+}
+#TopbarMobile > .row{
+    height: 50px;
+}
+
+@media screen and (min-width: 900px){
+    #TopbarDesktop{
+        display: flex; 
+    }
+    #TopbarMobile{
+        display: none; 
+    }
+
+}
+@media screen and (max-width: 900px){
+    #TopbarDesktop{
+        display: none; 
+    }
+    #TopbarMobile{
+        display: flex; 
+    }
+
 }
