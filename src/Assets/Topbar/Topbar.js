@@ -6,7 +6,7 @@ import './Topbar.css'
 export default function Topbar(){
 
     return(
-        <div id="Topbar">       
+        <div id="Topbar" className="pb-5">       
             <TopbarDesktop/>
             <TopbarMobile/>
         </div>

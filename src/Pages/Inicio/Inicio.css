@@ -1,0 +1,27 @@
+.gota-superior {
+  position: absolute;
+  left: -12vw;
+  opacity: 0.5;
+  width: 24%;
+  margin-top: 101px;
+}
+.gota-inferior {
+  position: relative;
+  right: -95vw;
+  opacity: 0.5;
+  width: 11%;
+  margin-top: -50vh;
+}
+.img-ilustracao {
+  width: 400px;
+}
+.linha-horizontal {
+  width: auto;
+  border-top: 0.3px solid rgb(226, 226, 226);
+}
+
+@media screen and (max-width: 1000px) {
+  .img-ilustracao {
+    width: 25vw;
+  }
+}

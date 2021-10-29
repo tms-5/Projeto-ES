@@ -12,6 +12,9 @@
     width: auto;
     align-self: center;
 }
+#TopbarDesktop{
+    overflow-y: hidden;
+}
 .menu-mobile{
     position: fixed;
     margin-top: 50px !important;    

@@ -11,7 +11,7 @@ export default function TopbarDesktop() {
   return (
     <div
       id="TopbarDesktop"
-      className="row m-0 bg-red"
+      className="row m-0"
       style={{ height: "50px" }}
     >
       <div
@@ -20,7 +20,7 @@ export default function TopbarDesktop() {
       >
         <img src={logo} width="200px" />
       </div>
-      <div className="col c-white d-flex pl-0">
+      <div className="col c-white d-flex pl-0 bg-red">
         <div className="bg-red topbar-detail">&nbsp;</div>
 
         <div className="d-flex topbar-router pl-1r justify-s-a f-09">
