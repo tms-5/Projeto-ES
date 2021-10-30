@@ -6,25 +6,32 @@
         "data": "24/11/2021 - 29/11/2021",
         "horario": [
             {
-                "segunda": "08h às 20h"
+                "dia": "Segunda",
+                "horario": "08h às 20h"
             },
             {
-                "terça": "08h às 20h"
+                "dia": "Terça",
+                "horario": "08h às 20h"
             },
             {
-                "quarta": "08h às 20h"
+                "dia": "Quarta",
+                "horario": "08h às 20h"
             },
             {
-                "quinta": "08h às 20h"
+                "dia": "Quinta",
+                "horario": "08h às 20h"
             },
             {
-                "sexta": "08h às 20h"
+                "dia": "Sexta",
+                "horario": "08h às 20h"
             },
             {
-                "sábado": "-"
+                "dia": "Sábado",
+                "horario": "-"
             },
             {
-                "domingo": "-"
+                "dia": "Domingo",
+                "horario": "-"
             }
         ]
     },
@@ -35,25 +42,32 @@
         "data": "24/11/2021 - 29/11/2021",
         "horario": [
             {
-                "segunda": "08h às 20h"
+                "dia": "Segunda",
+                "horario": "08h às 20h"
             },
             {
-                "terça": "08h às 20h"
+                "dia": "Terça",
+                "horario": "08h às 20h"
             },
             {
-                "quarta": "08h às 20h"
+                "dia": "Quarta",
+                "horario": "08h às 20h"
             },
             {
-                "quinta": "08h às 20h"
+                "dia": "Quinta",
+                "horario": "08h às 20h"
             },
             {
-                "sexta": "08h às 20h"
+                "dia": "Sexta",
+                "horario": "08h às 20h"
             },
             {
-                "sábado": "-"
+                "dia": "Sábado",
+                "horario": "-"
             },
             {
-                "domingo": "-"
+                "dia": "Domingo",
+                "horario": "-"
             }
         ]
     },
@@ -64,25 +78,32 @@
         "data": "24/11/2021 - 29/11/2021",
         "horario": [
             {
-                "segunda": "08h às 20h"
+                "dia": "Segunda",
+                "horario": "08h às 20h"
             },
             {
-                "terça": "08h às 20h"
+                "dia": "Terça",
+                "horario": "08h às 20h"
             },
             {
-                "quarta": "08h às 20h"
+                "dia": "Quarta",
+                "horario": "08h às 20h"
             },
             {
-                "quinta": "08h às 20h"
+                "dia": "Quinta",
+                "horario": "08h às 20h"
             },
             {
-                "sexta": "08h às 20h"
+                "dia": "Sexta",
+                "horario": "08h às 20h"
             },
             {
-                "sábado": "-"
+                "dia": "Sábado",
+                "horario": "-"
             },
             {
-                "domingo": "-"
+                "dia": "Domingo",
+                "horario": "-"
             }
         ]
     },
@@ -93,25 +114,32 @@
         "data": "24/11/2021 - 29/11/2021",
         "horario": [
             {
-                "segunda": "08h às 20h"
+                "dia": "Segunda",
+                "horario": "08h às 20h"
             },
             {
-                "terça": "08h às 20h"
+                "dia": "Terça",
+                "horario": "08h às 20h"
             },
             {
-                "quarta": "08h às 20h"
+                "dia": "Quarta",
+                "horario": "08h às 20h"
             },
             {
-                "quinta": "08h às 20h"
+                "dia": "Quinta",
+                "horario": "08h às 20h"
             },
             {
-                "sexta": "08h às 20h"
+                "dia": "Sexta",
+                "horario": "08h às 20h"
             },
             {
-                "sábado": "-"
+                "dia": "Sábado",
+                "horario": "-"
             },
             {
-                "domingo": "-"
+                "dia": "Domingo",
+                "horario": "-"
             }
         ]
     }

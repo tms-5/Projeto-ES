@@ -12,6 +12,9 @@
 .bg-red {
   background-color: #dc050a !important;
 }
+.bg-wine{
+  background-color: #B30D0D;
+}
 .bg-white {
   background-color: white !important;
 }
@@ -94,6 +97,12 @@
 .justify-s-a {
   justify-content: space-around;
 }
+.justify-self-center{
+  justify-self: center;
+}
+.justify-items-center{
+  justify-items: center;
+}
 
 /*Text aling*/
 .text-end {
@@ -128,10 +137,10 @@
   font-size: 0.7rem;
 }
 .f-08 {
-  font-size: 0.8rem;
+  font-size: 0.8rem !important;
 }
 .f-09 {
-  font-size: 0.9rem;
+  font-size: 0.9rem !important;
 }
 .f-1-1 {
   font-size: 1.1rem;
@@ -218,6 +227,9 @@
 .o-auto {
   overflow: auto;
 }
+.float-right{
+  float: right;
+}
 .align-center {
   align-items: center;
 }
@@ -258,7 +270,7 @@ a {
   border: 0.1em solid #ffffff;
   margin: 0 0.3em 0.3em 0;
   padding: 0 10px;
-  border-radius: 2px;
+  border-radius: 3px;
   box-sizing: border-box;
   text-decoration: none;
   font-weight: 300;

@@ -4,6 +4,7 @@
   opacity: 0.5;
   width: 24%;
   margin-top: 101px;
+  z-index: -1;
 }
 .gota-inferior {
   position: relative;
@@ -19,7 +20,15 @@
   width: auto;
   border-top: 0.3px solid rgb(226, 226, 226);
 }
-
+.campanhas > div > .col {
+  display: flex;
+}
+.campanhas > div  {
+  display: contents;
+}
+.campanhas > div > .col > select {
+  width: 80%;
+}
 @media screen and (max-width: 1000px) {
   .img-ilustracao {
     width: 25vw;

@@ -11,14 +11,14 @@ export default function TopbarDesktop() {
   return (
     <div
       id="TopbarDesktop"
-      className="row m-0"
+      className="row m-0 p-fixed w-web"
       style={{ height: "50px" }}
     >
       <div
-        className="col-2 bg-white text-end align-self-center"
-        style={{ minWidth: "200px" }}
+        className="col-2 m-0 pt-1 bg-white text-end align-self-center"
+        style={{ minWidth: "200px", minHeight: "50px" }}
       >
-        <img src={logo} width="200px" />
+        <img src={logo} width="150px" alt="Logo hemo loc" />
       </div>
       <div className="col c-white d-flex pl-0 bg-red">
         <div className="bg-red topbar-detail">&nbsp;</div>
@@ -26,7 +26,7 @@ export default function TopbarDesktop() {
         <div className="d-flex topbar-router pl-1r justify-s-a f-09">
           {topics.map((topic) => {
             return (
-              <div>
+              <div key={topic.index}>
                 <a className="c-white" href={topic.href}>
                   {topic.name}
                 </a>
@@ -34,7 +34,9 @@ export default function TopbarDesktop() {
             );
           })}
           <div>
-            <button className="btn-white">Entrar</button>
+            <a href="/login">
+              <button className="btn-white">Entrar</button>
+            </a>
           </div>
         </div>
       </div>

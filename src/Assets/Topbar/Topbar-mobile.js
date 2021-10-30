@@ -15,14 +15,14 @@ export default function TopbarMobile() {
     <div id="TopbarMobile" className="row m-0 bg-red">
       <div className="row m-0 p-fixed bg-red pt-1">
         <div className="col">
-          <img src={logo} width="150px" alt="White logo"/>
+          <img src={logo} width="150px" alt="White logo" />
         </div>
         <div className="col text-end">
           <button
             className="bg-transparent b-none mr-1r"
             onClick={() => setShowMenu(!showMenu)}
           >
-            <img src={menu} width="40px" alt="Hamburguer menu"/>
+            <img src={menu} width="40px" alt="Hamburguer menu" />
           </button>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function TopbarMobile() {
       >
         {topics.map((topic) => {
           return (
-            <div className="mt-2">
+            <div className="mt-2" key={topic.index}>
               <a className="c-white" href={topic.href}>
                 {topic.name}
               </a>
@@ -42,7 +42,9 @@ export default function TopbarMobile() {
           );
         })}
         <div>
-          <button className="btn-white mt-2">Entrar</button>
+          <a href="/login">
+            <button className="btn-white mt-2">Entrar</button>
+          </a>
         </div>
       </div>
     </div>

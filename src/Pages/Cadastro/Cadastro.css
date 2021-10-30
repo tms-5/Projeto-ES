@@ -1,0 +1,39 @@
+.gota-maior {
+    position: relative;
+    right: -42vw;
+    opacity: 0.5;
+    width: 35%;
+    margin-top: 10vh;
+  }
+  .gota-1{
+      position: relative;
+    right: -2vw;
+    opacity: 0.5;
+    width: 10%;
+    margin-top: 0vh;
+    transform: rotate(-45deg);
+  }
+  
+  .gota-2{
+      position: relative;
+    right: 15vw;
+    opacity: 0.5;
+    width: 10%;
+    margin-top: 80vh;
+    transform: rotate(20deg);
+  }
+  .gota-3{
+      position: relative;
+    right: 15vw;
+    opacity: 0.5;
+    width: 5%;
+    margin-top: -80vh;
+    transform: rotate(80deg);
+  }
+  .cadastro > #Estados {
+    font-weight: bold;
+  }
+  .cadastro > #Estados > .col {
+    margin-top: 1.5rem;
+  }
+  
