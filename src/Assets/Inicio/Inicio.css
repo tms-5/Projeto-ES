@@ -1,17 +1,17 @@
 .gota-superior {
   position: absolute;
-  left: -12vw;
+  left: -8vw;
   opacity: 0.5;
-  width: 24%;
-  margin-top: 101px;
+  width: 15%;
+  margin-top: 0px;
   z-index: -1;
 }
 .gota-inferior {
-  position: relative;
-  right: -95vw;
+  position: absolute;
+  right: 0vw;
   opacity: 0.5;
-  width: 11%;
-  margin-top: -50vh;
+  width: 5%;
+  margin-top: 15vh;
 }
 .img-ilustracao {
   width: 400px;
@@ -23,7 +23,7 @@
 .campanhas > div > .col {
   display: flex;
 }
-.campanhas > div  {
+.campanhas > div {
   display: contents;
 }
 .campanhas > div > .col > select {
@@ -32,5 +32,11 @@
 @media screen and (max-width: 1000px) {
   .img-ilustracao {
     width: 25vw;
+  }
+  .gota-superior {
+    display: none;
+  }
+  .gota-inferior {
+    display: none;
   }
 }

@@ -4,7 +4,7 @@ import logo from "../../Assets/Img/hemo.loc-branco.png";
 
 export default function Footer() {
   return (
-    <div id="Footer" className="bg-wine p-3">
+    <footer className="bg-wine p-3 w-web p-relative">
       <div className="d-grid c-white text-center justify-center">
         <img
           src={logo}
@@ -17,6 +17,6 @@ export default function Footer() {
           © CopyRight - 2021 Todos os direitos reservados
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

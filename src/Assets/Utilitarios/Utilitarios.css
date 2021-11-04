@@ -12,8 +12,8 @@
 .bg-red {
   background-color: #dc050a !important;
 }
-.bg-wine{
-  background-color: #B30D0D;
+.bg-wine {
+  background-color: #b30d0d;
 }
 .bg-white {
   background-color: white !important;
@@ -25,6 +25,9 @@
 }
 .p-fixed {
   position: fixed !important;
+}
+.p-relative{
+  position: relative !important;
 }
 
 /*Margin*/
@@ -38,7 +41,10 @@
   margin-left: 3rem;
 }
 .ml-2r {
-  margin-right: 2rem;
+  margin-left: 2rem;
+}
+.ml-1r {
+  margin-left: 1rem;
 }
 .mr-5r {
   margin-right: 5rem;
@@ -51,6 +57,9 @@
 }
 .mr-2r {
   margin-right: 2rem;
+}
+.mr-1r {
+  margin-right: 1rem;
 }
 .m-auto {
   margin: auto !important;
@@ -72,7 +81,7 @@
 .pl-1r {
   padding-left: 1rem !important;
 }
-.pr-5r{
+.pr-5r {
   padding-right: 5rem;
 }
 
@@ -100,10 +109,10 @@
 .justify-s-a {
   justify-content: space-around;
 }
-.justify-self-center{
+.justify-self-center {
   justify-self: center;
 }
-.justify-items-center{
+.justify-items-center {
   justify-items: center;
 }
 
@@ -204,8 +213,11 @@
 .h-fit {
   height: fit-content;
 }
+.h-100 {
+  height: 100vh !important;
+}
 .h-100v {
-  min-height: 100vh;
+  min-height: 100vh !important;
 }
 .h-80vh {
   height: 80vh;
@@ -230,7 +242,7 @@
 .o-auto {
   overflow: auto;
 }
-.float-right{
+.float-right {
   float: right;
 }
 .align-center {
@@ -272,11 +284,11 @@ a {
 .btn-red {
   border: 0.1em solid #ffffff;
   margin: 0 0.3em 0.3em 0;
-  padding: 0 10px;
-  border-radius: 3px;
+  padding: 4px 25px;
+  border-radius: 5px;
   box-sizing: border-box;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 500;
   color: #ffffff;
   text-align: center;
   transition: all 0.5s;

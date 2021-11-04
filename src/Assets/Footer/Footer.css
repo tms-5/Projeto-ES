@@ -1,3 +1,7 @@
 .linha-footer {
     border-top: 0.3px solid rgb(255, 230, 230);
   }
+  footer{
+    position: absolute !important;
+    bottom: 0;
+  }

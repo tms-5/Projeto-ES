@@ -13,7 +13,7 @@ export default function Login() {
           style={{ marginTop: "20vh" }}
         >
           <div className="col fw-bolder f-08 c-red justify-items-center d-contents">
-            <img src={logo} width="300px" alt="Logo hemo loc"/>
+            <img src={logo} width="300px" alt="Logo hemo loc" />
             EM TODOS OS LUGARES, PARA TODO MUNDO
           </div>
           <div className="col p-0 fw-bolder mt-5">

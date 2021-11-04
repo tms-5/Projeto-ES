@@ -92,7 +92,7 @@ export default function CadastroHemocentro() {
             />
           </div>
           <Estado />
-          <button className="btn-red p-1 mt-4">Entrar</button>
+          <button className="btn-red p-1 mt-4">Cadastrar</button>
           <a href="/" className="f-08 text-center c-pointer mt-2">
             <u>Já é cadastrado no hemo.loc? Faça seu login.</u>
           </a>
