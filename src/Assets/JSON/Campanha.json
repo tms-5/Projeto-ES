@@ -1,6 +1,8 @@
 [
     {
         "nome": "Campanha externa na Universidade Federal do Recife 1",
+        "estado": "Pernambuco",
+        "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
         "data": "24/11/2021 - 29/11/2021",
@@ -37,6 +39,8 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 2",
+        "estado": "Pernambuco",
+        "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
         "data": "24/11/2021 - 29/11/2021",
@@ -73,6 +77,8 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 3",
+        "estado": "Pernambuco",
+        "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
         "data": "24/11/2021 - 29/11/2021",
@@ -109,6 +115,8 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 4",
+        "estado": "Pernambuco",
+        "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
         "data": "24/11/2021 - 29/11/2021",

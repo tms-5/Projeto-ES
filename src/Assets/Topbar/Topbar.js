@@ -1,4 +1,3 @@
-import React from 'react';
 import TopbarMobile from './Topbar-mobile'
 import TopbarDesktop from './Topbar-desktop'
 import './Topbar.css'

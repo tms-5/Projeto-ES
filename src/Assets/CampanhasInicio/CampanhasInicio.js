@@ -1,4 +1,3 @@
-import React from "react";
 import Estados from "../Estados/Estados";
 import Campanha from "./Campanha";
 

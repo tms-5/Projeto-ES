@@ -72,6 +72,9 @@
 .pl-1r {
   padding-left: 1rem !important;
 }
+.pr-5r{
+  padding-right: 5rem;
+}
 
 /*Font color*/
 .c-white {
