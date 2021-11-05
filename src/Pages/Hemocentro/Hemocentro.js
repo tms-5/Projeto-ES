@@ -13,7 +13,7 @@ export default function Hemocentro() {
       <div className="mt-5">
         <Inicio text={`Olá, ${data.abreviacao}`} ilustracao={false} />
       </div>
-        <Lista />      
+      <Lista />
       <Footer />
     </div>
   );

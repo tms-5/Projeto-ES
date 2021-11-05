@@ -40,3 +40,16 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 778px) {
+  .img-ilustracao {
+    display: none;
+  }
+  .campanhas{
+    display: contents !important;
+  }
+  .campanhas > #Estados > .col{
+    margin-top: 1rem;
+  }
+}
+

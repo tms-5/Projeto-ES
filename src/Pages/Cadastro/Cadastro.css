@@ -37,7 +37,7 @@
   margin-top: 1.5rem;
 }
 .circle {
-  background: #DC050A;
+  background: #dc050a;
   border-radius: 50%;
   color: #fff;
   height: 40px;
@@ -49,4 +49,24 @@
   hyphens: auto;
   margin: 0.6em 0rem;
   text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  #CadastroUsuario > .left-cadastro, #CadastroHemocentro > .left-cadastro{
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  #CadastroCampanha >.container > .row{
+    display: block !important; 
+  }
+  #CadastroCampanha >.container > .row > .col{
+    margin-top: 1rem;
+  }
+
+  #CadastroCampanha >.container > .row > .col > .d-flex{
+    justify-content: center;
+  }
 }

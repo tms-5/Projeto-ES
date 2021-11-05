@@ -18,6 +18,9 @@
 .bg-white {
   background-color: white !important;
 }
+.bg-gray{
+  background-color: #F9F9F9;
+}
 
 /*Position*/
 .p-absolute {
@@ -171,6 +174,9 @@
 }
 .f-2 {
   font-size: 2rem;
+}
+.f-2-5 {
+  font-size: 2.5rem;
 }
 .f-3 {
   font-size: 3rem;
@@ -339,10 +345,10 @@ a {
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
   .container {
-    width: 500px !important;
+    width: 85% !important;
   }
 }
-@media screen and (min-width: 576px) and (max-width: 575px) {
+@media screen and (max-width: 575px) {
   .container {
     width: 100% !important;
   }

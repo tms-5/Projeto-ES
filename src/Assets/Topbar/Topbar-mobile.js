@@ -15,7 +15,7 @@ export default function TopbarMobile() {
     <div id="TopbarMobile" className="row m-0 bg-red">
       <div className="row m-0 p-fixed bg-red pt-1">
         <div className="col">
-          <img src={logo} width="150px" alt="White logo" />
+          <a href= "/"><img src={logo} width="150px" alt="White logo" /></a>
         </div>
         <div className="col text-end">
           <button

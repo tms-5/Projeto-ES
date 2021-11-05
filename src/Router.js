@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import CadastroCampanha from "./Pages/Cadastro/CadastroCampanha.js";
 import CadastroHemocentro from "./Pages/Cadastro/CadastroHemocentro.js";
 import CadastroUsuario from "./Pages/Cadastro/CadastroUsuario.js";
+import FAQ from "./Pages/FAQ/FAQ.js";
 import Hemocentro from "./Pages/Hemocentro/Hemocentro.js";
 import Index from './Pages/Index/Index.js'
 import Login from "./Pages/Login/Login.js";
@@ -18,7 +19,7 @@ export default function Router() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/hemocentro" component={Hemocentro} />
             <Route exact path="/sobre" component={Sobre} />
-            <Route exact path="/doar-sangue" component={Index} />
+            <Route exact path="/doar-sangue" component={FAQ} />
         </BrowserRouter>
     )
 }

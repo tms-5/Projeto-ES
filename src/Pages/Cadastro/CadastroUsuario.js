@@ -6,17 +6,17 @@ import Estado from "../../Assets/Estados/Estados";
 
 export default function CadastroUsuario() {
   return (
-    <div className="font-montserrat row m-0 p-0 h-100v">
-      <div className="col bg-wine">
+    <div className="font-montserrat row m-0 p-0 h-100v" id="CadastroUsuario">
+      <div className="col bg-wine left-cadastro">
         <img src={gota} className="gota-maior" alt="Gota de sangue"/>
         <img src={gota} className="gota-1" alt="Gota de sangue" />
         <img src={gota} className="gota-2" alt="Gota de sangue" />
         <img src={gota} className="gota-3" alt="Gota de sangue" />
       </div>
-      <div className="col p-0 m-0">
+      <div className="col p-0 m-0 d-grid">
         <div
           className="bg-wine w-50 float-right "
-          style={{ height: "50px" }}
+          style={{ height: "50px" , placeSelf: "self-end"}}
         ></div>
         <div
           className="row d-grid justify-center cadastro"
@@ -67,8 +67,8 @@ export default function CadastroUsuario() {
             />
           </div>
           <Estado />
-          <button className="btn-red p-1 mt-4">Cadastrar</button>
-          <a href="/" className="f-08 text-center c-pointer mt-2">
+          <button className="btn-red p-1 mt-4 ">Cadastrar</button>
+          <a href="/" className="f-08 text-center c-pointer mt-2 mb-4">
             <u>Já é cadastrado no hemo.loc? Faça seu login.</u>
           </a>
         </div>
