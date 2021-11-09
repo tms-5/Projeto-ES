@@ -1,7 +1,7 @@
 import Lista from "../../Assets/CampanhasHemocentro/Lista";
-import Footer from "../../Assets/Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
-import Topbar from "../../Assets/Topbar/Topbar";
+import Topbar from "../../Components/Topbar/Topbar";
 import "./Hemocentro.css";
 
 export default function Hemocentro() {

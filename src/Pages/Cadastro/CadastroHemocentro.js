@@ -66,6 +66,7 @@ export default function CadastroHemocentro() {
               }}
             </ViaCep>
           </div>
+          <Estado />
           <div className="col p-0 fw-bolder mt-4">
             Endereço{" "}
             <input
@@ -91,7 +92,6 @@ export default function CadastroHemocentro() {
               placeholder="Digite seu telefone"
             />
           </div>
-          <Estado />
           <button className="btn-red p-1 mt-4">Cadastrar</button>
           <a href="/" className="f-08 text-center c-pointer mt-2 mb-4">
             <u>Já é cadastrado no hemo.loc? Faça seu login.</u>

@@ -1,9 +1,12 @@
-import Lista from "../../Assets/CampanhasHemocentro/Lista";
-import Footer from "../../Assets/Footer/Footer";
+import ViaCep from "react-via-cep/dist/components/ViaCep";
+import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
-import Topbar from "../../Assets/Topbar/Topbar";
+import Topbar from "../../Components/Topbar/Topbar";
+import { useState } from "react";
 
 export default function CadastroCampanha() {
+  const [endereco, setEndereco] = useState({});
+  const [cep, setCep] = useState("");
   return (
     <div className="font-montserrat p-relative" id="CadastroCampanha">
       <Topbar />
@@ -39,11 +42,31 @@ export default function CadastroCampanha() {
         </div>
         <div className="row mt-4">
           <div className="col">
+            <ViaCep cep={cep} lazy>
+              {({ data, fetch }) => {
+                if (data) {
+                  setEndereco(data);
+                }
+                return (
+                  <div>
+                    CEP{" "}
+                    <input
+                      type="number"
+                      className="form-control f-09"
+                      placeholder="Digite seu CEP"
+                      onBlur={fetch}
+                      onChange={(e) => setCep(e.target.value)}
+                    />
+                  </div>
+                );
+              }}
+            </ViaCep>
             <div>Endereço da campanha</div>
             <input
               type="text"
               className="form-control f-09"
-              placeholder="Digite o endereço da campanha"
+              value={endereco.logradouro}
+              readOnly
             />
           </div>
           <div className="col">
@@ -56,7 +79,7 @@ export default function CadastroCampanha() {
           </div>
         </div>
         <div className="row mt-4">
-          <div>Data da campanha</div>
+          <div>Horário da campanha</div>
           <div className="col">
             <div className="d-flex mt-1">
               <div class="circle mr-1r">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../Img/hemo.loc.png";
+import logo from "../../Assets/Img/hemo.loc.png";
 
 export default function TopbarDesktop() {
   const [topics] = useState([

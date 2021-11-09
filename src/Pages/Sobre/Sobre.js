@@ -1,10 +1,10 @@
 import React from "react";
 import Propósito from "../../Assets/Sobre/Proposito.js";
-import Topbar from "../../Assets/Topbar/Topbar.js";
+import Topbar from "../../Components/Topbar/Topbar.js";
 import banner from "../../Assets/Img/doacao-de-sangue-banner.jpg";
 import "./Sobre.css";
 import Time from "../../Assets/Sobre/Time.js";
-import Footer from "../../Assets/Footer/Footer.js";
+import Footer from "../../Components/Footer/Footer.js";
 
 export default function Sobre() {
   return (

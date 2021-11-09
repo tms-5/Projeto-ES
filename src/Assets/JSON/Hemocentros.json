@@ -7,5 +7,35 @@
         "endereço": "Rua Joaquim Nabuco",
         "estado": "Pernambuco",
         "nome": "Fundação de Hematologia e Hemoterapia de Pernambuco",
-        "telefone": "(81) 3182-4600"
+        "telefone": "(81) 3182-4600",
+        "horario": [
+            {
+                "dia": "Segunda",
+                "horario": "08h às 20h"
+            },
+            {
+                "dia": "Terça",
+                "horario": "08h às 20h"
+            },
+            {
+                "dia": "Quarta",
+                "horario": "08h às 20h"
+            },
+            {
+                "dia": "Quinta",
+                "horario": "08h às 20h"
+            },
+            {
+                "dia": "Sexta",
+                "horario": "08h às 20h"
+            },
+            {
+                "dia": "Sábado",
+                "horario": "-"
+            },
+            {
+                "dia": "Domingo",
+                "horario": "-"
+            }
+        ]
     }

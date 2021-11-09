@@ -1,6 +1,6 @@
 import React from "react";
-import Topbar from "../../Assets/Topbar/Topbar.js";
-import Footer from "../../Assets/Footer/Footer";
+import Topbar from "../../Components/Topbar/Topbar.js";
+import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
 import CampanhasInicio from "../../Assets/CampanhasInicio/CampanhasInicio";
 

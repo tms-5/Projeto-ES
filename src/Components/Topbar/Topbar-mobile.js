@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "../Img/hemo.loc-branco.png";
-import menu from "../Img/menu-branco.png";
+import logo from "../../Assets/Img/hemo.loc-branco.png";
+import menu from "../../Assets/Img/menu-branco.png";
 
 export default function TopbarMobile() {
   const [showMenu, setShowMenu] = useState("");

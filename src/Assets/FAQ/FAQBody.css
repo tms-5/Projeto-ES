@@ -1,0 +1,22 @@
+.ball{
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    background: rgba(255, 255, 255, 0.84);
+}
+.ball-inside{
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    background: rgba(255, 255, 255, 0.99);
+    position: absolute;
+    margin: 7.5px;
+    padding: 7px;
+}
+.min-width-300{
+    min-width: 300px;
+}
+.accordion-button:not(.collapsed) {
+    color: #ce0300 !important;
+    background-color: #ffc5c48a !important;
+}

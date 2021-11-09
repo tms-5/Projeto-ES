@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../Assets/Img/hemo.loc.png";
 import gota from "../../Assets/Img/blood.png";
 import "./Login.css";

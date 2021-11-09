@@ -52,21 +52,21 @@
 }
 
 @media screen and (max-width: 700px) {
-  #CadastroUsuario > .left-cadastro, #CadastroHemocentro > .left-cadastro{
+  #CadastroUsuario > .left-cadastro,
+  #CadastroHemocentro > .left-cadastro {
     display: none;
   }
 }
 
-
 @media screen and (max-width: 600px) {
-  #CadastroCampanha >.container > .row{
-    display: block !important; 
+  #CadastroCampanha > .container > .row {
+    display: block !important;
   }
-  #CadastroCampanha >.container > .row > .col{
+  #CadastroCampanha > .container > .row > .col {
     margin-top: 1rem;
   }
 
-  #CadastroCampanha >.container > .row > .col > .d-flex{
+  #CadastroCampanha > .container > .row > .col > .d-flex {
     justify-content: center;
   }
 }
