@@ -18,7 +18,9 @@ export default function TopbarDesktop() {
         className="col-2 m-0 pt-1 bg-white text-end align-self-center"
         style={{ minWidth: "200px", minHeight: "50px" }}
       >
-        <a href= "/"><img src={logo} width="150px" alt="Logo hemo loc" /></a>
+        <a href="/">
+          <img src={logo} width="150px" alt="Logo hemo loc" />
+        </a>
       </div>
       <div className="col c-white d-flex pl-0 bg-red">
         <div className="bg-red topbar-detail">&nbsp;</div>

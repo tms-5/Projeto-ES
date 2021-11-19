@@ -16,7 +16,7 @@ export default function CadastroUsuario() {
       <div className="col p-0 m-0 d-grid">
         <div
           className="bg-wine w-50 float-right "
-          style={{ height: "50px" , placeSelf: "self-end"}}
+          style={{ height: "50px" , placeSelf: "self-end", alignSelf: "flex-start"}}
         ></div>
         <div
           className="row d-grid justify-center cadastro"
@@ -68,7 +68,7 @@ export default function CadastroUsuario() {
           </div>
           <Estado />
           <button className="btn-red p-1 mt-4 ">Cadastrar</button>
-          <a href="/" className="f-08 text-center c-pointer mt-2 mb-4">
+          <a href="/login" className="f-08 text-center c-pointer mt-2 mb-4">
             <u>Já é cadastrado no hemo.loc? Faça seu login.</u>
           </a>
         </div>

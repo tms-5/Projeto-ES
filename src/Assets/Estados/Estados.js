@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Estado() {
+const Estado = (params) => {
   let data = require("../JSON/Estados.json");
   const [estado, setEstado] = useState([]);
 
@@ -14,6 +14,9 @@ export default function Estado() {
             setEstado(data.filter((estado) => estado.sigla === e.target.value));
           }}
         >
+          <option value="0" selected disabled>
+            Selecionar...
+          </option>
           {data.map((estado, i) => {
             return (
               <option value={estado.sigla} key={i}>
@@ -26,17 +29,27 @@ export default function Estado() {
 
       <div className="col justify-s-a align-center">
         <div>Cidade</div>
-        {estado.map(({ sigla, nome, cidades }, i) => {
-          return (
-            <select className="form-select" key={i}>
-              {" "}
-              {cidades.map((cidade, j) => {
-                return <option key={j}>{cidade}</option>;
-              })}
-            </select>
-          );
-        })}
+        <select
+          className="form-select"
+          onChange={(e) => params.setCity(e.target.value)}
+        >
+          <option value="0" selected disabled>
+            Selecionar...
+          </option>
+          {estado.map(({ sigla, nome, cidades }, i) => {
+            return (
+              <>
+                {" "}
+                {cidades.map((cidade, j) => {
+                  return <option key={j}>{cidade}</option>;
+                })}
+              </>
+            );
+          })}
+        </select>
       </div>
     </div>
   );
-}
+};
+
+export default Estado;

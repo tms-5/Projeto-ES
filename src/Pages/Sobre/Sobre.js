@@ -10,7 +10,7 @@ export default function Sobre() {
   return (
     <div className="font-montserrat p-relative" id="Sobre">
       <Topbar />
-      <img src={banner} width="100%" alt="paciente doando sangue"/>
+      <img src={banner} width="100%" alt="paciente doando sangue" />
       <Propósito />
       <Time />
       <Footer />
