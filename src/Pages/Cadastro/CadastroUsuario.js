@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../Assets/Img/hemo.loc.png";
 import gota from "../../Assets/Img/blood.png";
 import "./Cadastro.css";
 import Estado from "../../Assets/Estados/Estados";
+import API from '../../Axios/API.js'
 
 export default function CadastroUsuario() {
+  const [city, setCity] = useState({}) 
   return (
     <div className="font-montserrat row m-0 p-0 h-100v" id="CadastroUsuario">
       <div className="col bg-wine left-cadastro">
-        <img src={gota} className="gota-maior" alt="Gota de sangue"/>
+        <img src={gota} className="gota-maior" alt="Gota de sangue" />
         <img src={gota} className="gota-1" alt="Gota de sangue" />
         <img src={gota} className="gota-2" alt="Gota de sangue" />
         <img src={gota} className="gota-3" alt="Gota de sangue" />
@@ -16,7 +18,11 @@ export default function CadastroUsuario() {
       <div className="col p-0 m-0 d-grid">
         <div
           className="bg-wine w-50 float-right "
-          style={{ height: "50px" , placeSelf: "self-end", alignSelf: "flex-start"}}
+          style={{
+            height: "50px",
+            placeSelf: "self-end",
+            alignSelf: "flex-start",
+          }}
         ></div>
         <div
           className="row d-grid justify-center cadastro"
@@ -38,7 +44,7 @@ export default function CadastroUsuario() {
             E-mail{" "}
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               placeholder="Digite seu email"
             />
           </div>
@@ -46,7 +52,7 @@ export default function CadastroUsuario() {
             Senha{" "}
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               placeholder="Digite sua senha"
             />
           </div>
@@ -62,11 +68,11 @@ export default function CadastroUsuario() {
             Idade{" "}
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               placeholder="Digite sua senha"
             />
           </div>
-          <Estado />
+          <Estado setCity={setCity}/>
           <button className="btn-red p-1 mt-4 ">Cadastrar</button>
           <a href="/login" className="f-08 text-center c-pointer mt-2 mb-4">
             <u>Já é cadastrado no hemo.loc? Faça seu login.</u>

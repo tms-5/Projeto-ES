@@ -3,11 +3,9 @@ import logo from "../../Assets/Img/hemo.loc.png";
 import gota from "../../Assets/Img/blood.png";
 import "./Cadastro.css";
 import Estado from "../../Assets/Estados/Estados";
-import ViaCep from "react-via-cep";
+import API from "../../Axios/API.js";
 
 export default function CadastroHemocentro() {
-  const [endereco, setEndereco] = useState({});
-  const [cep, setCep] = useState("");
   return (
     <div className="font-montserrat row m-0 p-0 h-100v" id="CadastroHemocentro">
       <div className="col bg-wine left-cadastro">
@@ -45,35 +43,13 @@ export default function CadastroHemocentro() {
               placeholder="Digite a abreviação do hemocentro"
             />
           </div>
-          <div className="col p-0 fw-bolder mt-4">
-            <ViaCep cep={cep} lazy>
-              {({ data, fetch }) => {
-                if (data) {
-                  setEndereco(data);
-                }
-                return (
-                  <div>
-                    CEP{" "}
-                    <input
-                      type="number"
-                      className="form-control f-09"
-                      placeholder="Digite seu CEP"
-                      onBlur={fetch}
-                      onChange={(e) => setCep(e.target.value)}
-                    />
-                  </div>
-                );
-              }}
-            </ViaCep>
-          </div>
           <Estado />
           <div className="col p-0 fw-bolder mt-4">
             Endereço{" "}
             <input
               type="text"
               className="form-control f-09"
-              value={endereco.logradouro}
-              readOnly
+              placeholder="Digite o endereço do hemocentro"
             />
           </div>
           <div className="col p-0 fw-bolder mt-4">
