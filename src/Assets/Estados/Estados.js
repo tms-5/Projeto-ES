@@ -30,6 +30,7 @@ const Estado = (params) => {
       <div className="col justify-s-a align-center">
         <div>Cidade</div>
         <select
+        placeholder="cidade"
           className="form-select"
           onChange={(e) => params.setCity(e.target.value)}
         >
@@ -41,7 +42,7 @@ const Estado = (params) => {
               <>
                 {" "}
                 {cidades.map((cidade, j) => {
-                  return <option key={j}>{cidade}</option>;
+                  return <option value={cidade} key={j}>{cidade}</option>;
                 })}
               </>
             );

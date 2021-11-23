@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Estados from "../Estados/Estados";
 import Campanha from "./Campanha";
 import API from "../../Axios/API.js";
+import Toast from "../Toast/Toast.js";
 
 export default function CampanhasInicio() {
   /*let campanhas = require("../JSON/Campanha.json");*/
@@ -9,9 +10,17 @@ export default function CampanhasInicio() {
   const [campanhas, setCampanhas] = useState([]);
   useEffect(() => {
     const fetchCampanhas = async () => {
-      const response = await API.get("/campanha");
-      const postData = await response.data;
-      setCampanhas(postData);
+      await API.get("/campanha")
+        .then((resp) => {
+          setCampanhas(resp.data);
+        })
+        .catch((erro) => {
+          Toast.fire({
+            icon: "error",
+            title:
+              "Não conseguimos recuperar alguns dados. Por favor atualize a página.",
+          });
+        });
     };
     fetchCampanhas();
   }, []);
@@ -22,7 +31,8 @@ export default function CampanhasInicio() {
       <div className="row text-center mt-5 mb-5 campanhas p-2">
         <Estados setCity={setCity} />
       </div>
-      {city === ""
+      <div style={{minHeight: "20vh"}}>
+         {city === ""
         ? campanhas.map((campanha, i) => {
             return <Campanha campanhas={campanha} key={i} />;
           })
@@ -31,6 +41,8 @@ export default function CampanhasInicio() {
               return <Campanha campanhas={campanha} />;
             }
           })}
+      </div>
+     
     </div>
   );
 }
