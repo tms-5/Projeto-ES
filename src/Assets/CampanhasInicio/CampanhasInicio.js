@@ -5,8 +5,8 @@ import API from "../../Axios/API.js";
 
 export default function CampanhasInicio() {
   /*let campanhas = require("../JSON/Campanha.json");*/
-  const [city, setCity] = useState({});
-  const [campanhas, setCampanhas] = useState();
+  const [city, setCity] = useState("");
+  const [campanhas, setCampanhas] = useState([]);
   useEffect(() => {
     const fetchCampanhas = async () => {
       const response = await API.get("/campanha");
@@ -22,9 +22,15 @@ export default function CampanhasInicio() {
       <div className="row text-center mt-5 mb-5 campanhas p-2">
         <Estados setCity={setCity} />
       </div>
-      {campanhas.map((campanha, i) => {
-        return <Campanha campanhas={campanha} key={i} />;
-      })}
+      {city === ""
+        ? campanhas.map((campanha, i) => {
+            return <Campanha campanhas={campanha} key={i} />;
+          })
+        : campanhas.map((campanha, i) => {
+            if (campanha.cidade === city) {
+              return <Campanha campanhas={campanha} />;
+            }
+          })}
     </div>
   );
 }
