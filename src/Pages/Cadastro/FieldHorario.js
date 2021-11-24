@@ -12,15 +12,13 @@ const FieldHorario = () => {
     { dia: "sabado", horario: "" },
     { dia: "domingo", horario: "" },
   ]);
-  const [segunda, setSegunda] = useState({ das: "", as: "" });
-  const handleChangeHorario = (field, value) => {
-    setHorario((prevState) => [
-      ...prevState,
-      {
-        dia: field,
-        horario: value,
-      },
-    ]);
+  const [segunda, setSegunda] = useState({ das: "05", as: "17" });
+  const handleChangeHorario = (value, position) => {
+    setHorario(() =>
+      horarios.map((content, i) =>
+        i === position ? {dia: content.dia, horario: value } : content
+      )
+    );
   };
 
   return (
@@ -47,10 +45,7 @@ const FieldHorario = () => {
             className="btn-red"
             style={{ padding: "0px 10px" }}
             onClick={() =>
-              handleChangeHorario(
-                "segunda",
-                `Das ${segunda.das}h às ${segunda.as}h`
-              )
+              handleChangeHorario(`Das ${segunda.das}h às ${segunda.as}h`, 0)
             }
           >
             <img src={save} width="10px" />

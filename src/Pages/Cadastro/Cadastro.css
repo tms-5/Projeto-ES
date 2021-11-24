@@ -83,7 +83,7 @@
   text-align: center;
 }
 
-.form-container > form {
+.form-container > div {
   background-color: #ffffff;
   display: flex;
   align-items: center;

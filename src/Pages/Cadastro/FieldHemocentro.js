@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Estado from "../../Assets/Estados/Estados";
 import API from "../../Axios/API";
 import Toast from "../../Assets/Toast/Toast.js";
@@ -15,6 +15,7 @@ const renderTooltip = (props) => (
 );
 
 const FieldHemocentro = () => {
+  const childRef = useRef();
   const [cep, setCep] = useState("");
   const [dados, setDados] = useState({
     nome: {
@@ -283,10 +284,10 @@ const FieldHemocentro = () => {
             ?
           </Button>
         </OverlayTrigger>
-        <FieldHorario />
+        <FieldHorario ref={childRef} />
       </div>
 
-      <button className="btn-red p-1 mt-4" onClick={beforeSave}>
+      <button className="btn-red p-1 mt-4" onClick={() =>  childRef.current.getAlert(), beforeSave}>
         Cadastrar
       </button>
       <a href="/login" className="f-08 text-center c-pointer mt-2 mb-4">

@@ -22,14 +22,14 @@ const Cadastro = () => {
     <div className="fade show d-block">
       <div className="container h-100v scroll-none" id="container">
         <div className="form-container sign-up-container pt-4">
-          <form action="/" className="d-grid text-left">
+          <div className="d-grid text-left">
             <FieldHemocentro />
-          </form>
+          </div>
         </div>
         <div className="form-container sign-in-container pt-4">
-          <form action="/" className="d-grid">
+          <div className="d-grid">
             <FieldUsuario />
-          </form>
+          </div>
         </div>
         <div className="overlay-container scroll-none">
           <div className="overlay scroll-none">
