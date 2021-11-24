@@ -7,7 +7,7 @@ import FieldUsuario from "./FieldUsuario";
 export default function CadastroUsuario() {
   return (
     <div className="font-montserrat row m-0 p-0 h-100v" id="CadastroUsuario">
-      <div className="col bg-wine left-cadastro">
+      <div className="col bg-pink left-cadastro">
         <img src={gota} className="gota-maior" alt="Gota de sangue" />
         <img src={gota} className="gota-1" alt="Gota de sangue" />
         <img src={gota} className="gota-2" alt="Gota de sangue" />

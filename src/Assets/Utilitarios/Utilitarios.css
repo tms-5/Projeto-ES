@@ -15,11 +15,14 @@
 .bg-wine {
   background-color: #b30d0d;
 }
+.bg-pink {
+  background-color: #ffa0a2;
+}
 .bg-white {
   background-color: white !important;
 }
-.bg-gray{
-  background-color: #F9F9F9;
+.bg-gray {
+  background-color: #f9f9f9;
 }
 
 /*Position*/
@@ -29,7 +32,7 @@
 .p-fixed {
   position: fixed !important;
 }
-.p-relative{
+.p-relative {
   position: relative !important;
 }
 
@@ -285,6 +288,10 @@ a {
 }
 .white-space {
   white-space: nowrap;
+}
+.scroll-none {
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .btn-red {

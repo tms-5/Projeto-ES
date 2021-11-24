@@ -4,11 +4,12 @@ import gota from "../../Assets/Img/blood.png";
 import "./Cadastro.css";
 import Estado from "../../Assets/Estados/Estados";
 import API from "../../Axios/API.js";
+import FieldHorario from "./FieldHorario";
 
 export default function CadastroHemocentro() {
   return (
     <div className="font-montserrat row m-0 p-0 h-100v" id="CadastroHemocentro">
-      <div className="col bg-wine left-cadastro">
+      <div className="col bg-pink left-cadastro">
         <img src={gota} className="gota-maior" alt="Gota de sangue" />
         <img src={gota} className="gota-1" alt="Gota de sangue" />
         <img src={gota} className="gota-2" alt="Gota de sangue" />
@@ -67,6 +68,9 @@ export default function CadastroHemocentro() {
               className="form-control f-09"
               placeholder="Digite seu telefone"
             />
+          </div>
+          <div className="col p-0 fw-bolder mt-4 field-horario">
+            <FieldHorario />
           </div>
           <button className="btn-red p-1 mt-4">Cadastrar</button>
           <a href="/" className="f-08 text-center c-pointer mt-2 mb-4">

@@ -29,7 +29,7 @@ export default function TopbarMobile() {
 
       <div
         className={`bg-red menu-mobile w-100 Z-10 text-center c-white ${
-          showMenu === true ? "show" : ""
+          showMenu === true ? "show pb-1" : ""
         }`}
       >
         {topics.map((topic) => {
