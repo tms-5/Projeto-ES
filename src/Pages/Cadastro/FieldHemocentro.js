@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import Estado from "../../Assets/Estados/Estados";
+import { useRef, useState } from "react";
 import API from "../../Axios/API";
 import Toast from "../../Assets/Toast/Toast.js";
 import ViaCep from "react-via-cep/dist/components/ViaCep";
@@ -287,7 +286,10 @@ const FieldHemocentro = () => {
         <FieldHorario ref={childRef} />
       </div>
 
-      <button className="btn-red p-1 mt-4" onClick={() =>  childRef.current.getAlert(), beforeSave}>
+      <button
+        className="btn-red p-1 mt-4"
+        onClick={(() => childRef.current.getAlert(), beforeSave)}
+      >
         Cadastrar
       </button>
       <a href="/login" className="f-08 text-center c-pointer mt-2 mb-4">

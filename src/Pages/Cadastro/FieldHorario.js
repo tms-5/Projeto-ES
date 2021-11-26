@@ -1,25 +1,43 @@
-import e from "cors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import save from "../../Assets/Img/save.png";
 
-const FieldHorario = () => {
+const FieldHorario = (params) => {
+  const [validado, setValidado] = useState(false);
   const [horarios, setHorario] = useState([
-    { dia: "segunda", horario: "" },
-    { dia: "terca", horario: "" },
-    { dia: "quarta", horario: "" },
-    { dia: "quinta", horario: "" },
-    { dia: "sexta", horario: "" },
-    { dia: "sabado", horario: "" },
-    { dia: "domingo", horario: "" },
+    { dia: "Segunda", das: "", as: "" },
+    { dia: "Terça", das: "", as: "" },
+    { dia: "Quarta", das: "", as: "" },
+    { dia: "Quinta", das: "", as: "" },
+    { dia: "Sexta", das: "", as: "" },
+    { dia: "Sábado", das: "", as: "" },
+    { dia: "Domingo", das: "", as: "" },
   ]);
-  const [segunda, setSegunda] = useState({ das: "05", as: "17" });
-  const handleChangeHorario = (value, position) => {
+  const handleChangeHorario = (field, value, position) => {
     setHorario(() =>
       horarios.map((content, i) =>
-        i === position ? {dia: content.dia, horario: value } : content
+        i === position
+          ? field === "das"
+            ? { dia: content.dia, das: value, as: content.as }
+            : { dia: content.dia, das: content.das, as: value }
+          : content
       )
     );
   };
+
+  useEffect(
+    function emptyValidation() {
+      horarios.map((content, i) => {
+        if (content.das === "" || content.as === "") {
+          setValidado(false);
+        } else {
+          setValidado(true);
+        }
+      });
+    },
+    [horarios]
+  );
+
+  useEffect(() => params.setHorario(horarios, validado), [validado]);
 
   return (
     <>
@@ -30,26 +48,19 @@ const FieldHorario = () => {
           </div>
           <input
             type="number"
+            id="DasSegunda"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onChange={(e) => setSegunda({ das: e.target.value })}
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 0)}
           />
           -
           <input
             type="number"
+            id="AsSegunda"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onChange={(e) => setSegunda({ as: e.target.value })}
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 0)}
           />
-          <button
-            className="btn-red"
-            style={{ padding: "0px 10px" }}
-            onClick={() =>
-              handleChangeHorario(`Das ${segunda.das}h às ${segunda.as}h`, 0)
-            }
-          >
-            <img src={save} width="10px" />
-          </button>
         </div>
         <div className="d-flex mt-1">
           <div class="circle mr-1r">
@@ -57,18 +68,19 @@ const FieldHorario = () => {
           </div>
           <input
             type="number"
+            id="DasTerça"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 1)}
           />
           -
           <input
             type="number"
+            id="AsTerça"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 1)}
           />
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
         <div className="d-flex mt-1">
           <div class="circle mr-1r">
@@ -76,18 +88,19 @@ const FieldHorario = () => {
           </div>
           <input
             type="number"
+            id="DasQuarta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 2)}
           />
           -
           <input
             type="number"
+            id="AsQuarta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 2)}
           />
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
         <div className="d-flex mt-1">
           <div class="circle mr-1r">
@@ -95,18 +108,19 @@ const FieldHorario = () => {
           </div>
           <input
             type="number"
+            id="DasQuinta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 3)}
           />
           -
           <input
             type="number"
+            id="AsQuinta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 3)}
           />{" "}
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
         <div className="d-flex mt-1">
           <div class="circle mr-1r">
@@ -114,18 +128,19 @@ const FieldHorario = () => {
           </div>
           <input
             type="number"
+            id="DasSexta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 4)}
           />
           -
           <input
             type="number"
+            id="AsSexta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 4)}
           />{" "}
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
       </div>
       <div className="col">
@@ -134,38 +149,40 @@ const FieldHorario = () => {
             <p class="circle-content f-09 fw-500">SÁB</p>
           </div>
           <input
-            type="number"
+            type="text"
+            id="DasSabado"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 5)}
           />
           -
           <input
-            type="number"
+            type="text"
+            id="AsSabado"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 5)}
           />{" "}
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
         <div className="d-flex mt-2">
           <div class="circle mr-1r">
             <p class="circle-content f-09 fw-500">DOM</p>
           </div>
           <input
-            type="number"
+            type="text"
+            id="DasDomingo"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            onBlur={(e) => handleChangeHorario("das", e.target.value, 6)}
           />
           -
           <input
-            type="number"
+            type="text"
+            id="AsDomingo"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            onBlur={(e) => handleChangeHorario("as", e.target.value, 6)}
           />{" "}
-          <button className="btn-red " style={{ padding: "0px 10px" }}>
-            <img src={save} width="10px" />
-          </button>
         </div>
       </div>{" "}
     </>

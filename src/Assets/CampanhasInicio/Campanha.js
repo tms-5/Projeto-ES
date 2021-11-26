@@ -48,7 +48,7 @@ export default function Campanha(props) {
           {campanha.horario.map((dia, i) => {
             return (
               <div key={i}>
-                {dia.dia} - {dia.horario}
+                {dia.dia} - Das {dia.das}h às {dia.as}h
               </div>
             );
           })}

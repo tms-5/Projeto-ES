@@ -31,18 +31,17 @@ export default function CampanhasInicio() {
       <div className="row text-center mt-5 mb-5 campanhas p-2">
         <Estados setCity={setCity} />
       </div>
-      <div style={{minHeight: "20vh"}}>
-         {city === ""
-        ? campanhas.map((campanha, i) => {
-            return <Campanha campanhas={campanha} key={i} />;
-          })
-        : campanhas.map((campanha, i) => {
-            if (campanha.cidade === city) {
-              return <Campanha campanhas={campanha} />;
-            }
-          })}
+      <div style={{ minHeight: "20vh" }}>
+        {city === ""
+          ? campanhas.map((campanha, i) => {
+              return <Campanha campanhas={campanha} key={i} />;
+            })
+          : campanhas.map((campanha, i) => {
+              if (campanha.cidade === city) {
+                return <Campanha campanhas={campanha} />;
+              }
+            })}
       </div>
-     
     </div>
   );
 }
