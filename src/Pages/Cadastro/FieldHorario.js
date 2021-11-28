@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import save from "../../Assets/Img/save.png";
 
 const FieldHorario = (params) => {
   const [validado, setValidado] = useState(false);
@@ -12,6 +11,7 @@ const FieldHorario = (params) => {
     { dia: "Sábado", das: "", as: "" },
     { dia: "Domingo", das: "", as: "" },
   ]);
+  
   const handleChangeHorario = (field, value, position) => {
     setHorario(() =>
       horarios.map((content, i) =>
@@ -26,18 +26,19 @@ const FieldHorario = (params) => {
 
   useEffect(
     function emptyValidation() {
-      horarios.map((content, i) => {
+      horarios.map((content) => {
         if (content.das === "" || content.as === "") {
-          setValidado(false);
+          return setValidado(false);
         } else {
-          setValidado(true);
+          return setValidado(true);
         }
+       
       });
     },
     [horarios]
   );
 
-  useEffect(() => params.setHorario(horarios, validado), [validado]);
+  useEffect(() => {params.setHorario(horarios); params.setValidado(validado)}, [validado]);
 
   return (
     <>

@@ -7,7 +7,7 @@ import clock from "../Img/clock.png";
 export default function Campanha(props) {
   const [campanha, setCampanha] = useState({
     nome: "",
-    endereço: "",
+    endereco: "",
     complemento: "",
     data: "",
     horario: [],
@@ -25,7 +25,7 @@ export default function Campanha(props) {
         <div className="col d-grid">
           <div>
             <img src={pin} width="13px" alt="Vetor de um pin" />
-            &nbsp;&nbsp;&nbsp;{campanha.endereço}
+            &nbsp;&nbsp;&nbsp;{campanha.endereco}
           </div>
 
           <div>

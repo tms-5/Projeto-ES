@@ -8,7 +8,7 @@ export default function TopbarMobile() {
     { name: "Início", index: "0", href: "/" },
     { name: "O que é o hemo.loc?", index: "1", href: "/sobre" },
     { name: "Posso doar sangue?", index: "2", href: "/doar-sangue" },
-    { name: "Cadastre-se", index: "3", href: "/cadastro" },
+    { name: "Cadastre-se", index: "3", href: "/cadastrar" },
   ]);
 
   return (

@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
-import API from "../../Axios/API";
+import { useEffect, useState } from "react";
 import Toast from "../../Assets/Toast/Toast.js";
 import ViaCep from "react-via-cep/dist/components/ViaCep";
 import FieldHorario from "./FieldHorario";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
+import { doc, setDoc, collection } from "firebase/firestore";
+import db from "../../Axios/Firebase";
+import InputMask from "react-input-mask";
 
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
@@ -14,8 +16,14 @@ const renderTooltip = (props) => (
 );
 
 const FieldHemocentro = () => {
-  const childRef = useRef();
   const [cep, setCep] = useState("");
+  const [viacep, setViacep] = useState({
+    logradouro: "",
+    localidade: "",
+    uf: "",
+  });
+  const [validado, setValidado] = useState(false);
+  const [horario, setHorario] = useState([]);
   const [dados, setDados] = useState({
     nome: {
       hasError: false,
@@ -47,6 +55,11 @@ const FieldHemocentro = () => {
       value: "",
       errorMessage: "Campo não pode ficar em branco.",
     },
+    estado: {
+      hasError: false,
+      value: viacep.uf,
+      errorMessage: "Campo não pode ficar em branco.",
+    },
     telefone: {
       hasError: false,
       value: "",
@@ -59,7 +72,7 @@ const FieldHemocentro = () => {
     },
     horario: {
       hasError: false,
-      value: [],
+      value: horario,
       errorMessage: "Campos não podem ficar em branco.",
     },
   });
@@ -73,6 +86,16 @@ const FieldHemocentro = () => {
       },
     }));
   };
+
+  useEffect(() => {
+    handleChangeDados("cidade", "value", viacep.localidade);
+    handleChangeDados("endereco", "value", viacep.logradouro);
+    handleChangeDados("estado", "value", viacep.uf);
+  }, [viacep]);
+
+  useEffect(() => {
+    handleChangeDados("horario", "value", horario);
+  }, [validado]);
 
   const emailValidator = (email) => {
     var re = /\S+@\S+\.\S+/;
@@ -88,20 +111,49 @@ const FieldHemocentro = () => {
     }
   };
 
-  const fetchCampanhas = async () => {
-    await API.post("/usuario", {
+  const fetchHemocentro = async () => {
+    await setDoc(doc(db, "Hemocentro", dados.abreviacao.value), {
       nome: dados.nome.value,
       email: dados.email.value,
+      abreviacao: dados.abreviacao.value,
       senha: dados.senha.value,
+      estado: dados.estado.value,
       cidade: dados.cidade.value,
+      telefone: dados.telefone.value,
+      cep: cep,
+      complemento: dados.complemento.value,
+      endereco: dados.endereco.value,
     })
-      .then((resp) => {
+      .then(async () => {
+        await setDoc(doc(collection(db, "campanha")), {
+          nome: dados.abreviacao.value + " - " + dados.nome.value,
+          cidade: dados.cidade.value,
+          complemento: dados.complemento.value,
+          data: "-",
+          endereco: dados.endereco.value,
+          horario: dados.horario.value,
+          estado: dados.estado.value,
+          hemocentro: dados.abreviacao.value,
+        })
+          .then(() => {
+            Toast.fire({
+              icon: "sucess",
+              title: "Campanha cadastrada com sucesso.",
+            });
+          })
+          .catch(() => {
+            Toast.fire({
+              icon: "error",
+              title: "Não foi possível cadastrar a campanha.",
+            });
+          });
         Toast.fire({
           icon: "sucess",
-          title: "Usuário cadastrado com sucesso.",
+          title: "Hemocentro cadastrado com sucesso.",
         });
       })
-      .catch((erro) => {
+      .catch((error) => {
+        console.log(error);
         Toast.fire({
           icon: "error",
           title:
@@ -109,7 +161,18 @@ const FieldHemocentro = () => {
         });
       });
   };
+
   const beforeSave = () => {
+    fieldVerification("nome", dados.nome.value, 1);
+    fieldVerification("email", dados.email.value, 1);
+    fieldVerification("senha", dados.senha.value, 1);
+    fieldVerification("abreviacao", dados.abreviacao.value, 1);
+    fieldVerification("telefone", dados.telefone.value, 1);
+    fieldVerification("cidade", dados.cidade.value, 1);
+    fieldVerification("endereco", dados.endereco.value, 1);
+    fieldVerification("estado", dados.estado.value, 1);
+    fieldVerification("horario", dados.horario.value, 0);
+    fieldVerification("complemento", dados.complemento.value, 1);
     if (
       dados.nome.hasError === true ||
       dados.email.hasError === true ||
@@ -117,15 +180,17 @@ const FieldHemocentro = () => {
       dados.abreviacao.hasError === true ||
       dados.telefone.hasError === true ||
       dados.endereco.hasError === true ||
+      dados.cidade.hasError === true ||
+      dados.estado.hasError === true ||
       dados.complemento.hasError === true ||
-      dados.horario.hasError === true
+      validado === false
     ) {
       Toast.fire({
         icon: "error",
         title: "Verifique se todos os campos foram digitados corretamente.",
       });
     } else {
-      fetchCampanhas();
+      fetchHemocentro();
     }
   };
   return (
@@ -153,7 +218,11 @@ const FieldHemocentro = () => {
           className="form-control f-09"
           placeholder="Digite a abreviação do hemocentro"
           onChange={(e) =>
-            handleChangeDados("abreviacao", "value", e.target.value)
+            handleChangeDados(
+              "abreviacao",
+              "value",
+              e.target.value.toUpperCase()
+            )
           }
           onBlur={(e) => {
             fieldVerification("abreviacao", e.target.value, 1);
@@ -182,15 +251,25 @@ const FieldHemocentro = () => {
       </div>
       <div className="col p-0 fw-bolder mt-4">
         Telefone{" "}
-        <input
-          type="phone"
+        <InputMask
+          type="text"
           className="form-control f-09"
-          placeholder="Digite seu telefone"
+          placeholder="(00) 00000-0000"
+          mask={
+            dados.telefone.value.length <= 14
+              ? "(99) 9999-9999"
+              : "(99) 99999-9999"
+          }
           onChange={(e) =>
             handleChangeDados("telefone", "value", e.target.value)
           }
           onBlur={(e) => {
-            fieldVerification("telefone", e.target.value, 14);
+            let val_length_without_dashes = e.target.value.replace(
+              / |-|_/g,
+              ""
+            );
+            console.log(val_length_without_dashes);
+            fieldVerification("telefone", val_length_without_dashes, 11);
           }}
         />
         {dados.telefone.hasError ? (
@@ -199,20 +278,31 @@ const FieldHemocentro = () => {
       </div>
       <div className="col p-0 fw-bolder mt-4">
         <ViaCep cep={cep} lazy>
-          {({ data, fetch }) => {
+          {({ data, fetch, error }) => {
+            let erro = false;
+            if (error) {
+              erro = true;
+            }
             if (data) {
-              handleChangeDados("cidade", "value", data);
+              setViacep(data);
+              erro = false;
             }
             return (
               <div>
                 CEP{" "}
-                <input
-                  type="number"
+                <InputMask
+                  type="text"
                   className="form-control f-09"
-                  placeholder="Digite seu CEP"
+                  placeholder="00000-000"
+                  mask={"99999-999"}
                   onBlur={fetch}
                   onChange={(e) => setCep(e.target.value)}
                 />
+                {erro ? (
+                  <div className="f-07 text-danger">
+                    Verifique se o CEP foi digitado corretamente.
+                  </div>
+                ) : null}
               </div>
             );
           }}
@@ -225,10 +315,11 @@ const FieldHemocentro = () => {
           className="form-control f-09"
           placeholder="Digite o endereço do hemocentro"
           readOnly
-          onChange={(e) =>
-            handleChangeDados("telefone", "value", e.target.value)
-          }
+          value={viacep.logradouro}
         />
+        {dados.endereco.hasError ? (
+          <div className="f-07 text-danger">{dados.endereco.errorMessage}</div>
+        ) : null}
       </div>
       <div className="col p-0 fw-bolder mt-4">
         Número e complemento{" "}
@@ -240,7 +331,7 @@ const FieldHemocentro = () => {
             handleChangeDados("complemento", "value", e.target.value)
           }
           onBlur={(e) => {
-            fieldVerification("complemento", e.target.value, 14);
+            fieldVerification("complemento", e.target.value, 1);
           }}
         />
         {dados.complemento.hasError ? (
@@ -265,14 +356,13 @@ const FieldHemocentro = () => {
         ) : null}
       </div>
       <div className="col p-0 fw-bolder mt-4 field-horario">
-        Horário de funcionamento para doação{" "}
+        Horário de funcionamento para doação de sangue{" "}
         <OverlayTrigger
           placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={renderTooltip}
         >
           <Button
-            roundedCircle
             variant="success"
             className="b-none bg-transparent c-black f-07"
             style={{
@@ -283,13 +373,13 @@ const FieldHemocentro = () => {
             ?
           </Button>
         </OverlayTrigger>
-        <FieldHorario ref={childRef} />
+        {dados.horario.hasError ? (
+          <div className="f-07 text-danger">{dados.horario.errorMessage}</div>
+        ) : null}
+        <FieldHorario setHorario={setHorario} setValidado={setValidado} />
       </div>
 
-      <button
-        className="btn-red p-1 mt-4"
-        onClick={(() => childRef.current.getAlert(), beforeSave)}
-      >
+      <button className="btn-red p-1 mt-4" onClick={() => beforeSave()}>
         Cadastrar
       </button>
       <a href="/login" className="f-08 text-center c-pointer mt-2 mb-4">

@@ -7,9 +7,10 @@ import FieldHorario from "./FieldHorario";
 import Toast from "../../Assets/Toast/Toast.js";
 import API from "../../Axios/API";
 
-export default function CadastroCampanha() {
+const CadastroCampanha = () => {
   const [endereco, setEndereco] = useState({});
   const [cep, setCep] = useState("");
+  const [validado, setValidado] = useState(false);
   const [horario, setHorario] = useState([]);
   const [dados, setDados] = useState({
     nome: {
@@ -47,6 +48,7 @@ export default function CadastroCampanha() {
         [field]: value,
       },
     }));
+    return;
   };
 
   const fieldVerification = (field, value, size) => {
@@ -62,12 +64,14 @@ export default function CadastroCampanha() {
       if (content.das === "" || content.as === "") {
         handleChangeDados("horario", "hasError", true);
       }
+      return;
     });
+    return;
   };
 
   useEffect(() => {
     handleChangeDados("horario", "value", horario);
-  }, [horario]);
+  }, [validado]);
 
   const fetchCampanhas = async () => {
     await API.post("/campanha", {
@@ -99,7 +103,7 @@ export default function CadastroCampanha() {
       dados.data.hasError === true ||
       dados.cidade.hasError === true ||
       dados.complemento.hasError === true ||
-      dados.horario.hasError === true 
+      dados.horario.hasError === true
     ) {
       Toast.fire({
         icon: "error",
@@ -149,7 +153,14 @@ export default function CadastroCampanha() {
                 type="date"
                 className="form-control f-09 w-50 ml-1r"
                 placeholder="Digite o complemento do endereço"
-                onBlur={(e) => handleChangeDados("data", "value", document.querySelector('#DataInicioCampanha') + e.target.value)}
+                onBlur={(e) =>
+                  handleChangeDados(
+                    "data",
+                    "value",
+                    document.querySelector("#DataInicioCampanha") +
+                      e.target.value
+                  )
+                }
               />
             </div>
           </div>
@@ -196,13 +207,16 @@ export default function CadastroCampanha() {
         </div>
         <div className="row mt-4">
           <div>Horário da campanha</div>
-          <FieldHorario setHorario={setHorario} />
+          <FieldHorario setHorario={setHorario} setValidado={setValidado} />
         </div>
         <div className="col text-end mt-4 mb-3">
-          <button className="btn-red f-09">Cadastrar campanha</button>
+          <button className="btn-red f-09" onClick={() => beforeSave()}>
+            Cadastrar campanha
+          </button>
         </div>
       </div>
       <Footer />
     </div>
   );
-}
+};
+export default CadastroCampanha;

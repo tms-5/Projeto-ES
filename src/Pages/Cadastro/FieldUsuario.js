@@ -90,6 +90,12 @@ const FieldUsuario = () => {
       });
   };
   const beforeSave = () => {
+    fieldVerification("nome", dados.nome.value, 1);
+    fieldVerification("email", dados.email.value, 1);
+    fieldVerification("senha", dados.senha.value, 1);
+    fieldVerification("sexo", dados.sexo.value, 1);
+    fieldVerification("idade", dados.idade.value, 1);    
+    fieldVerification("cidade", dados.cidade.value, 1);
     if (
       dados.nome.hasError === true ||
       dados.email.hasError === true ||
@@ -150,6 +156,9 @@ const FieldUsuario = () => {
             fieldVerification("senha", e.target.value, 5);
           }}
         />
+        {dados.senha.hasError ? (
+          <div className="f-07 text-danger">{dados.senha.errorMessage}</div>
+        ) : null}
       </div>
       <div className="col p-0 fw-bolder mt-4">
         Sexo{" "}
@@ -164,6 +173,9 @@ const FieldUsuario = () => {
           <option>Masculino</option>
           <option>Prefiro não me identificar</option>
         </select>
+        {dados.sexo.hasError ? (
+          <div className="f-07 text-danger">{dados.sexo.errorMessage}</div>
+        ) : null}
       </div>
       <div className="col p-0 fw-bolder mt-4">
         Idade{" "}
@@ -181,6 +193,9 @@ const FieldUsuario = () => {
         ) : null}
       </div>
       <Estado setCity={setCity} />
+      {dados.cidade.hasError ? (
+          <div className="f-07 fw-bolder text-danger">{dados.cidade.errorMessage}</div>
+        ) : null}
       <button className="btn-red p-1 mt-4" onClick={beforeSave}>
         Cadastrar
       </button>

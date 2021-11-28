@@ -1,4 +1,3 @@
-import { useState } from "react";
 import logo from "../../Assets/Img/hemo.loc.png";
 import "./Cadastro.css";
 import FieldUsuario from "./FieldUsuario";
@@ -6,7 +5,6 @@ import gota from "../../Assets/Img/blood.png";
 import FieldHemocentro from "./FieldHemocentro";
 
 const Cadastro = () => {
-
   const teste = () => {
     var signUpButton = document.getElementById("signUp");
     var signInButton = document.getElementById("signIn");

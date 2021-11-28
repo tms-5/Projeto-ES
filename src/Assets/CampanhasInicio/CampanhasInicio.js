@@ -40,6 +40,7 @@ export default function CampanhasInicio() {
               if (campanha.cidade === city) {
                 return <Campanha campanhas={campanha} />;
               }
+              return;
             })}
       </div>
     </div>
