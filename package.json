@@ -23,7 +23,9 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "nth-check": ">=2.0.1",
+    "immer": ">=9.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

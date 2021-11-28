@@ -11,7 +11,7 @@ const FieldHorario = (params) => {
     { dia: "Sábado", das: "", as: "" },
     { dia: "Domingo", das: "", as: "" },
   ]);
-  
+
   const handleChangeHorario = (field, value, position) => {
     setHorario(() =>
       horario.map((content, i) =>
@@ -32,13 +32,15 @@ const FieldHorario = (params) => {
         } else {
           return setValidado(true);
         }
-       
       });
     },
     [horario]
   );
 
-  useEffect(() => {params.setHorario(horario); params.setValidado(validado)}, [validado]);
+  useEffect(() => {
+    params.setHorario(horario);
+    params.setValidado(validado);
+  }, [validado]);
 
   return (
     <>
