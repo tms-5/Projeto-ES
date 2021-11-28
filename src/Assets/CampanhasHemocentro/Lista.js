@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import API from "../../Axios/API";
 import deleteImg from "../Img/delete.png";
 import editImg from "../Img/pencil.png";
 import SearchBar from "./Search";

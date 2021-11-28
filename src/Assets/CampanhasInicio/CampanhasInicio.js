@@ -1,29 +1,24 @@
 import { useEffect, useState } from "react";
 import Estados from "../Estados/Estados";
 import Campanha from "./Campanha";
-import API from "../../Axios/API.js";
-import Toast from "../Toast/Toast.js";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import db from "../../Axios/Firebase";
 
 export default function CampanhasInicio() {
   /*let campanhas = require("../JSON/Campanha.json");*/
   const [city, setCity] = useState("");
-  const [campanhas, setCampanhas] = useState([]);
-  useEffect(() => {
-    const fetchCampanhas = async () => {
-      await API.get("/campanha")
-        .then((resp) => {
-          setCampanhas(resp.data);
-        })
-        .catch((erro) => {
-          Toast.fire({
-            icon: "error",
-            title:
-              "Não conseguimos recuperar alguns dados. Por favor atualize a página.",
-          });
-        });
-    };
-    fetchCampanhas();
+  const [campanha, setCampanha] = useState([]);
+  useEffect(async () => {
+    const q = query(collection(db, "campanha"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      handleChangeDados(doc.data());
+    });
   }, []);
+
+  const handleChangeDados = (data) => {
+    setCampanha((prevState) => [...prevState, data]);
+  };
 
   return (
     <div className="mt-5 mb-5">
@@ -33,12 +28,12 @@ export default function CampanhasInicio() {
       </div>
       <div style={{ minHeight: "20vh" }}>
         {city === ""
-          ? campanhas.map((campanha, i) => {
+          ? campanha.map((campanha, i) => {
               return <Campanha campanhas={campanha} key={i} />;
             })
-          : campanhas.map((campanha, i) => {
+          : campanha.map((campanha, i) => {
               if (campanha.cidade === city) {
-                return <Campanha campanhas={campanha} />;
+                return <Campanha campanhas={campanha} key={i}/>;
               }
               return;
             })}

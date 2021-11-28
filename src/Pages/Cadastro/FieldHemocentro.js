@@ -134,6 +134,7 @@ const FieldHemocentro = () => {
           horario: dados.horario.value,
           estado: dados.estado.value,
           hemocentro: dados.abreviacao.value,
+          observacao: ""
         })
           .then(() => {
             Toast.fire({

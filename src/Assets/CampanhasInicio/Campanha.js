@@ -3,6 +3,7 @@ import pin from "../Img/pin.png";
 import complemento from "../Img/home-address.png";
 import calendar from "../Img/calendar.png";
 import clock from "../Img/clock.png";
+import obs from "../Img/obs.png";
 
 export default function Campanha(props) {
   const [campanha, setCampanha] = useState({
@@ -11,6 +12,7 @@ export default function Campanha(props) {
     complemento: "",
     data: "",
     horario: [],
+    observacao: "",
   });
 
   useEffect(() => {
@@ -41,6 +43,13 @@ export default function Campanha(props) {
             <img src={calendar} width="17px" alt="Vetor de um calendário" />
             &nbsp;&nbsp;&nbsp;{campanha.data}
           </div>
+
+          {campanha.observacao !== "" ? (
+            <div className="c-black">
+              <img src={obs} width="17px" alt="Vetor de um calendário" />
+              &nbsp;&nbsp;&nbsp;{campanha.observacao}
+            </div>
+          ) : null}
         </div>
         <div className="col c-red">
           <img src={clock} width="17px" alt="Vetor de um relógio" />
