@@ -33,7 +33,7 @@ export default function CampanhasInicio() {
             })
           : campanha.map((campanha, i) => {
               if (campanha.cidade === city) {
-                return <Campanha campanhas={campanha} key={i}/>;
+                return <Campanha campanhas={campanha} key={i} />;
               }
               return;
             })}
