@@ -9,7 +9,9 @@
   <li>João Victor Pereira - jvpn@cin.ufpe.br</li>
 </ul>
 
-<h2> O Projeto </h2>
+<h2> Overview do  Projeto </h2>
 
 ![pagina_inicial](https://user-images.githubusercontent.com/55145670/143318204-7e0a669d-77a4-4016-8052-91a17d138ccb.png)
 ![sobre](https://user-images.githubusercontent.com/55145670/143318215-2276244d-d52d-40f2-88b3-5dbcff123711.png)
+
+<h2>Instalação</h2>

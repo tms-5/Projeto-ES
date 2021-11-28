@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import deleteImg from "../Img/delete.png";
 import editImg from "../Img/pencil.png";
 import SearchBar from "./Search";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import db from "../../Axios/Firebase";
+import Campanha from "./Campanha";
 
 const filterPosts = (posts, query) => {
   if (!query) {
@@ -31,14 +39,14 @@ const Lista = (props) => {
       );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        handleChangeDados(doc.data());
+        handleChangeDados(doc.data(), doc.id);
       });
     }
     importQuery();
   }, []);
 
-  const handleChangeDados = (data) => {
-    setCampanha((prevState) => [...prevState, data]);
+  const handleChangeDados = (data, id) => {
+    setCampanha((prevState) => [...prevState, { data, id }]);
   };
 
   return (
@@ -54,20 +62,8 @@ const Lista = (props) => {
         <div className="col-2 fw-500 text-center">Ação</div>
         <div className="linha-horizontal mb-3"></div>
         <ul style={{ minHeight: "60vh" }}>
-          {filteredPosts.map((post) => (
-            <div className="row mb-5 mt-2" key={post.id}>
-              <div className="col fw-500 c-red">
-                <li key={post.id}>{post.nome}</li>{" "}
-              </div>
-              <div className="col-2 text-center">
-                <button className="btn">
-                  <img src={deleteImg} width="15px" alt="Ícone de lixeira" />
-                </button>
-                <button className="btn">
-                  <img src={editImg} width="15px" alt="Ícone de um lápis" />
-                </button>
-              </div>
-            </div>
+          {filteredPosts.map((post, i) => (
+            <Campanha key={i} post={post} />
           ))}
         </ul>
       </div>

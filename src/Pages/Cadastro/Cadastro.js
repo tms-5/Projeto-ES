@@ -17,7 +17,7 @@ const Cadastro = () => {
     });
   };
   return (
-    <div className="fade show d-block">
+    <div className="fade show d-block" id="Cadastro">
       <div className="container h-100v scroll-none" id="container">
         <div className="form-container sign-up-container pt-4">
           <div className="d-grid text-left">
