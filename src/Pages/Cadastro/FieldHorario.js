@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const FieldHorario = (params) => {
   const [validado, setValidado] = useState(false);
-  const [horarios, setHorario] = useState([
+  const [horario, setHorario] = useState([
     { dia: "Segunda", das: "", as: "" },
     { dia: "Terça", das: "", as: "" },
     { dia: "Quarta", das: "", as: "" },
@@ -14,7 +14,7 @@ const FieldHorario = (params) => {
   
   const handleChangeHorario = (field, value, position) => {
     setHorario(() =>
-      horarios.map((content, i) =>
+      horario.map((content, i) =>
         i === position
           ? field === "das"
             ? { dia: content.dia, das: value, as: content.as }
@@ -26,7 +26,7 @@ const FieldHorario = (params) => {
 
   useEffect(
     function emptyValidation() {
-      horarios.map((content) => {
+      horario.map((content) => {
         if (content.das === "" || content.as === "") {
           return setValidado(false);
         } else {
@@ -35,10 +35,10 @@ const FieldHorario = (params) => {
        
       });
     },
-    [horarios]
+    [horario]
   );
 
-  useEffect(() => {params.setHorario(horarios); params.setValidado(validado)}, [validado]);
+  useEffect(() => {params.setHorario(horario); params.setValidado(validado)}, [validado]);
 
   return (
     <>

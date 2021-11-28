@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import deleteImg from "../Img/delete.png";
 import editImg from "../Img/pencil.png";
 import SearchBar from "./Search";
-import Toast from "../Toast/Toast.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 
@@ -24,15 +23,18 @@ const Lista = (props) => {
   const [searchQuery, setSearchQuery] = useState(queries || "");
   const filteredPosts = filterPosts(campanha, searchQuery);
 
-  useEffect(async () => {
-    const q = query(
-      collection(db, "campanha"),
-      where("hemocentro", "==", props.id)
-    );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      handleChangeDados(doc.data());
-    });
+  useEffect(() => {
+    async function importQuery() {
+      const q = query(
+        collection(db, "campanha"),
+        where("hemocentro", "==", props.id)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        handleChangeDados(doc.data());
+      });
+    }
+    importQuery();
   }, []);
 
   const handleChangeDados = (data) => {
@@ -53,7 +55,7 @@ const Lista = (props) => {
         <div className="linha-horizontal mb-3"></div>
         <ul style={{ minHeight: "60vh" }}>
           {filteredPosts.map((post) => (
-            <div className="row mb-5 mt-2">
+            <div className="row mb-5 mt-2" key={post.id}>
               <div className="col fw-500 c-red">
                 <li key={post.id}>{post.nome}</li>{" "}
               </div>

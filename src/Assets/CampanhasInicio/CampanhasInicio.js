@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import Estados from "../Estados/Estados";
 import Campanha from "./Campanha";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 
 export default function CampanhasInicio() {
-  /*let campanhas = require("../JSON/Campanha.json");*/
   const [city, setCity] = useState("");
   const [campanha, setCampanha] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
+    async function importQuery() {
     const q = query(collection(db, "campanha"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       handleChangeDados(doc.data());
     });
+  }
+  importQuery();
   }, []);
 
   const handleChangeDados = (data) => {
