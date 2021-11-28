@@ -1,7 +1,7 @@
 [
     {
         "nome": "Campanha externa na Universidade Federal do Recife 1",
-        "estado": "Pernambuco",
+        "estado": "PE",
         "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
@@ -40,7 +40,7 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 2",
-        "estado": "Pernambuco",
+        "estado": "PE",
         "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
@@ -79,7 +79,7 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 3",
-        "estado": "Pernambuco",
+        "estado": "PE",
         "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
@@ -118,7 +118,7 @@
     },
     {
         "nome": "Campanha externa na Universidade Federal do Recife 4",
-        "estado": "Pernambuco",
+        "estado": "PE",
         "cidade": "Recife",
         "endereço": "Rua Professor Arthur de Sá, 80 - Várzea. Recife- PE",
         "complemento": "Centro de Informática",
@@ -127,31 +127,38 @@
         "horario": [
             {
                 "dia": "Segunda",
-                "horario": "08h às 20h"
+                "das": "08",
+                "as": "17"
             },
             {
                 "dia": "Terça",
-                "horario": "08h às 20h"
+                "das": "08",
+                "as": "17"
             },
             {
                 "dia": "Quarta",
-                "horario": "08h às 20h"
+                "das": "08",
+                "as": "17"
             },
             {
                 "dia": "Quinta",
-                "horario": "08h às 20h"
+                "das": "08",
+                "as": "17"
             },
             {
                 "dia": "Sexta",
-                "horario": "08h às 20h"
+                "das": "08",
+                "as": "17"
             },
             {
                 "dia": "Sábado",
-                "horario": "-"
+                "das": "-",
+                "as": "-"
             },
             {
                 "dia": "Domingo",
-                "horario": "-"
+                "das": "-",
+                "as": "-"
             }
         ]
     }

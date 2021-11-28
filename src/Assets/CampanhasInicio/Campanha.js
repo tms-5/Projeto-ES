@@ -3,14 +3,16 @@ import pin from "../Img/pin.png";
 import complemento from "../Img/home-address.png";
 import calendar from "../Img/calendar.png";
 import clock from "../Img/clock.png";
+import obs from "../Img/obs.png";
 
 export default function Campanha(props) {
   const [campanha, setCampanha] = useState({
     nome: "",
-    endereço: "",
+    endereco: "",
     complemento: "",
     data: "",
     horario: [],
+    observacao: "",
   });
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Campanha(props) {
         <div className="col d-grid">
           <div>
             <img src={pin} width="13px" alt="Vetor de um pin" />
-            &nbsp;&nbsp;&nbsp;{campanha.endereço}
+            &nbsp;&nbsp;&nbsp;{campanha.endereco}
           </div>
 
           <div>
@@ -41,6 +43,13 @@ export default function Campanha(props) {
             <img src={calendar} width="17px" alt="Vetor de um calendário" />
             &nbsp;&nbsp;&nbsp;{campanha.data}
           </div>
+
+          {campanha.observacao !== "" ? (
+            <div className="c-black">
+              <img src={obs} width="17px" alt="Vetor de um calendário" />
+              &nbsp;&nbsp;&nbsp;{campanha.observacao}
+            </div>
+          ) : null}
         </div>
         <div className="col c-red">
           <img src={clock} width="17px" alt="Vetor de um relógio" />
@@ -48,7 +57,7 @@ export default function Campanha(props) {
           {campanha.horario.map((dia, i) => {
             return (
               <div key={i}>
-                {dia.dia} - {dia.horario}
+                {dia.dia} - Das {dia.das}h às {dia.as}h
               </div>
             );
           })}

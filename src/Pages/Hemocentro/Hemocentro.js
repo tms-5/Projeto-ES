@@ -6,20 +6,15 @@ import "./Hemocentro.css";
 import { useState } from "react";
 
 export default function Hemocentro() {
-  let data = require("../../Assets/JSON/Hemocentros.json");
-  const [topics] = useState([
-    { name: "Início", index: "0", href: "/" },
-    { name: "O que é o hemo.loc?", index: "1", href: "/sobre" },
-    { name: "Cadastre uma campanha externa", index: "2", href: "/cadastro-campanha" },
-  ]);
+  let data = require("../../Assets/JSON/Hemocentros.json");  
 
   return (
     <div className="font-montserrat p-relative">
-      <Topbar links={topics}/>
+      <Topbar/>
       <div className="mt-5">
         <Inicio text={`Olá, ${data.abreviacao}`} ilustracao={false} />
       </div>
-      <Lista />
+      <Lista id={data.abreviacao}/>
       <Footer />
     </div>
   );
