@@ -7,15 +7,16 @@ import db from "../../Axios/Firebase";
 export default function CampanhasInicio() {
   const [city, setCity] = useState("");
   const [campanha, setCampanha] = useState([]);
+
   useEffect(() => {
     async function importQuery() {
-    const q = query(collection(db, "campanha"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      handleChangeDados(doc.data());
-    });
-  }
-  importQuery();
+      const q = query(collection(db, "campanha"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        handleChangeDados(doc.data());
+      });
+    }
+    importQuery();
   }, []);
 
   const handleChangeDados = (data) => {

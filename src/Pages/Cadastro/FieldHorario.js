@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-const FieldHorario = (params) => {
-  const [validado, setValidado] = useState(false);
+const FieldHorario = (props) => {
   const [horario, setHorario] = useState([
     { dia: "Segunda", das: "", as: "" },
     { dia: "Terça", das: "", as: "" },
@@ -28,33 +27,28 @@ const FieldHorario = (params) => {
     function emptyValidation() {
       horario.map((content) => {
         if (content.das === "" || content.as === "") {
-          return setValidado(false);
+          return "";
         } else {
-          return setValidado(true);
+          return props.setHorario(horario);
         }
       });
     },
     [horario]
   );
 
-  useEffect(() => {
-    params.setHorario(horario);
-    params.setValidado(validado);
-  }, [validado]);
-
   return (
     <>
       <div className="col">
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">SEG</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">SEG</p>
           </div>
           <input
             type="number"
             id="DasSegunda"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 0)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 0)}
           />
           -
           <input
@@ -62,19 +56,19 @@ const FieldHorario = (params) => {
             id="AsSegunda"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 0)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 0)}
           />
         </div>
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">TER</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">TER</p>
           </div>
           <input
             type="number"
             id="DasTerça"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 1)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 1)}
           />
           -
           <input
@@ -82,19 +76,19 @@ const FieldHorario = (params) => {
             id="AsTerça"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 1)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 1)}
           />
         </div>
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">QUA</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">QUA</p>
           </div>
           <input
             type="number"
             id="DasQuarta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 2)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 2)}
           />
           -
           <input
@@ -102,19 +96,19 @@ const FieldHorario = (params) => {
             id="AsQuarta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 2)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 2)}
           />
         </div>
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">QUI</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">QUI</p>
           </div>
           <input
             type="number"
             id="DasQuinta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 3)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 3)}
           />
           -
           <input
@@ -122,19 +116,19 @@ const FieldHorario = (params) => {
             id="AsQuinta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 3)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 3)}
           />{" "}
         </div>
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">SEX</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">SEX</p>
           </div>
           <input
             type="number"
             id="DasSexta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 4)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 4)}
           />
           -
           <input
@@ -142,21 +136,21 @@ const FieldHorario = (params) => {
             id="AsSexta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 4)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 4)}
           />{" "}
         </div>
       </div>
       <div className="col">
         <div className="d-flex mt-1">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">SÁB</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">SÁB</p>
           </div>
           <input
             type="text"
             id="DasSabado"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 5)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 5)}
           />
           -
           <input
@@ -164,19 +158,19 @@ const FieldHorario = (params) => {
             id="AsSabado"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 5)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 5)}
           />{" "}
         </div>
         <div className="d-flex mt-2">
-          <div class="circle mr-1r">
-            <p class="circle-content f-09 fw-500">DOM</p>
+          <div className="circle mr-1r">
+            <p className="circle-content f-09 fw-500">DOM</p>
           </div>
           <input
             type="text"
             id="DasDomingo"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
-            onBlur={(e) => handleChangeHorario("das", e.target.value, 6)}
+            onChange={(e) => handleChangeHorario("das", e.target.value, 6)}
           />
           -
           <input
@@ -184,7 +178,7 @@ const FieldHorario = (params) => {
             id="AsDomingo"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
-            onBlur={(e) => handleChangeHorario("as", e.target.value, 6)}
+            onChange={(e) => handleChangeHorario("as", e.target.value, 6)}
           />{" "}
         </div>
       </div>{" "}

@@ -7,7 +7,7 @@ import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import FieldCampanha from "./FieldCampanha";
 
-const CadastroCampanha = (props) => {
+const EditarCampanha = (props) => {
   const [dados, setDados] = useState({
     nome: {
       hasError: false,
@@ -153,11 +153,11 @@ const CadastroCampanha = (props) => {
             beforeSave();
           }}
         >
-          Cadastrar campanha
+          Salvar
         </button>
       </div>
       <Footer />
     </div>
   );
 };
-export default CadastroCampanha;
+export default EditarCampanha;

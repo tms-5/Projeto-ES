@@ -7,11 +7,10 @@ import {
   query,
   where,
   getDocs,
-  doc,
-  deleteDoc,
 } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import Campanha from "./Campanha";
+import { Link } from "react-router-dom";
 
 const filterPosts = (posts, query) => {
   if (!query) {
@@ -52,9 +51,13 @@ const Lista = (props) => {
   return (
     <div className="font-montserrat container mt-3">
       <div className="col text-end">
-        <a href="/cadastro-campanha">
+        <Link
+          to={{pathname: "/cadastro-campanha", state: {props: props.id}}}
+          className="f-08 text-center c-pointer mt-2"
+        >
+          {" "}
           <button className="btn-red f-08">Cadastrar campanha</button>
-        </a>
+        </Link>
       </div>
       <div className="row">
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

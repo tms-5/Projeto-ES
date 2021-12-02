@@ -3,10 +3,12 @@ import editImg from "../Img/pencil.png";
 import { doc, deleteDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 
 const Campanha = (props) => {  
   async function deletarCampanha(id) {
     await deleteDoc(doc(db, "campanha", id));
+    window.location.reload();
   }
   return (
     <div className="row mb-5 mt-2">

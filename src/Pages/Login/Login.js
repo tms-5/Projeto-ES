@@ -1,6 +1,7 @@
 import logo from "../../Assets/Img/hemo.loc.png";
 import gota from "../../Assets/Img/blood.png";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -32,13 +33,9 @@ export default function Login() {
             />
           </div>
           <button className="btn-red p-1 mt-4">Entrar</button>
-          <a href="/" className="f-08 text-center c-pointer mt-2">
-            <u>Novo no hemo.loc? Cadastre-se agora.</u>
-          </a>
+          <Link to="/cadastrar" className="f-08 text-center c-pointer mt-2"> <u>Novo no hemo.loc? Cadastre-se agora.</u></Link>   
           <div className="linha-horizontal mt-3"></div>
-          <a href="/" className="f-08 text-center c-pointer mt-2">
-            <u>É um hemocentro? Solicite seu acesso.</u>
-          </a>
+          <Link to="/cadastrar" className="f-08 text-center c-pointer mt-2"> <u>É um hemocentro? Solicite seu acesso.</u></Link>          
         </div>
       </div>
       <div className="col bg-wine">
