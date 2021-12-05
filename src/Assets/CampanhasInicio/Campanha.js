@@ -10,7 +10,8 @@ export default function Campanha(props) {
     nome: "",
     endereco: "",
     complemento: "",
-    data: "",
+    dataInicial: "",
+    dataFinal: "",
     horario: [],
     observacao: "",
   });
@@ -41,7 +42,14 @@ export default function Campanha(props) {
 
           <div className="c-red">
             <img src={calendar} width="17px" alt="Vetor de um calendário" />
-            &nbsp;&nbsp;&nbsp;{campanha.data}
+            &nbsp;&nbsp;&nbsp;{" "}
+            {new Date(campanha.dataInicial).toLocaleDateString("pt-BR", {
+              timeZone: "UTC",
+            }) +
+              " - " +
+              new Date(campanha.dataFinal).toLocaleDateString("pt-BR", {
+                timeZone: "UTC",
+              })}
           </div>
 
           {campanha.observacao !== "" ? (

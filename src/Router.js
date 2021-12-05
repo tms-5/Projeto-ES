@@ -27,7 +27,7 @@ const Router = () => {
     <BrowserRouter>
       <Route exact path="/" component={Index} />      
       <Route exact path="/cadastrar" component={Cadastro} />
-      <Route exact path="/cadastro-campanha" component={CadastroCampanha} />
+      <Route exact path="/campanha" component={CadastroCampanha} />   
       <Route exact path="/login" component={Login} />
       <Route exact path="/hemocentro" component={Hemocentro} />
       <Route exact path="/sobre" component={Sobre} />

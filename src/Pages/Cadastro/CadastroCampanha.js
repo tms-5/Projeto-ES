@@ -1,9 +1,9 @@
 import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
 import Topbar from "../../Components/Topbar/Topbar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Toast from "../../Assets/Toast/Toast.js";
-import { doc, setDoc, collection } from "firebase/firestore";
+import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import FieldCampanha from "./FieldCampanha";
 
@@ -14,10 +14,15 @@ const CadastroCampanha = (props) => {
       value: "",
       errorMessage: "Campo não pode ficar em branco.",
     },
-    data: {
+    dataInicial: {
       hasError: false,
       value: "",
-      errorMessage: "Data da campanha não pode ficar vazia.",
+      errorMessage: "Data inicial campanha não pode ficar vazia.",
+    },
+    dataFinal: {
+      hasError: false,
+      value: "",
+      errorMessage: "Data final da campanha não pode ficar vazia.",
     },
     cidade: {
       hasError: false,
@@ -46,7 +51,7 @@ const CadastroCampanha = (props) => {
     },
     observacao: {
       hasError: false,
-      value: "",
+      value: " ",
       errorMessage: "",
     },
     horario: {
@@ -55,12 +60,78 @@ const CadastroCampanha = (props) => {
       errorMessage: "Campos dos horários não podem ficar em branco.",
     },
   });
+  const [campanha, setCampanha] = useState({});
   const childRef = useRef();
+
+  useEffect(() => {
+    if (props.location.state.id) {
+      async function importQuery() {
+        const q = doc(db, "campanha", props.location.state.id);
+        const docSnap = await getDoc(q);
+        if (docSnap.exists()) {
+          setCampanha(docSnap.data());
+        } else {
+          window.location.reload();
+        }
+      }
+      importQuery();
+    }
+  }, []);
+
+  const fieldVerification = (field, value, size) => {
+    if (value === "" || value === " " || value.length <= size) {
+      handleChangeDados(field, "hasError", true);
+    } else {
+      handleChangeDados(field, "hasError", false);
+    }
+  };
+
+  const beforeSave = async () => {
+    fieldVerification("nome", dados.nome.value, 1);
+    fieldVerification("dataInicial", dados.dataInicial.value, 1);
+    fieldVerification("dataFinal", dados.dataFinal.value, 1);
+    fieldVerification("cidade", dados.cidade.value, 1);
+    fieldVerification("complemento", dados.complemento.value, 1);
+    fieldVerification("endereco", dados.endereco.value, 0);
+    fieldVerification("estado", dados.estado.value, 0);
+    fieldVerification("hemocentro", dados.hemocentro.value, 0);
+    fieldVerification("horario", dados.horario.value, 0);
+    if (
+      dados.nome.hasError === true ||
+      dados.dataInicial.hasError === true ||
+      dados.dataFinal.hasError === true ||
+      dados.cidade.hasError === true ||
+      dados.complemento.hasError === true ||
+      dados.endereco.hasError === true ||
+      dados.estado.hasError === true ||
+      dados.hemocentro.hasError === true ||
+      dados.horario.hasError === true
+    ) {
+      Toast.fire({
+        icon: "error",
+        title: "Verifique se todos os campos foram digitados corretamente.",
+      });
+    } else {
+      props.location.state.id ? updateCampanhas() : fetchCampanhas();
+    }
+  };
+
+  const handleChangeDados = (data, field, value) => {
+    setDados((prevState) => ({
+      ...prevState,
+      [data]: {
+        ...prevState[data],
+        [field]: value,
+      },
+    }));
+    return;
+  };
 
   const fetchCampanhas = async () => {
     await setDoc(doc(collection(db, "campanha")), {
       nome: dados.nome.value,
-      data: dados.data.value,
+      dataInicial: dados.dataInicial.value,
+      dataFinal: dados.dataFinal.value,
       cidade: dados.cidade.value,
       complemento: dados.complemento.value,
       horario: dados.horario.value,
@@ -86,75 +157,79 @@ const CadastroCampanha = (props) => {
       });
   };
 
-  const fieldVerification = (field, value, size) => {
-    if (value === "" || value === " " || value.length <= size) {
-      handleChangeDados(field, "hasError", true);
-    } else {
-      handleChangeDados(field, "hasError", false);
-    }
-  };
-
-  const beforeSave = () => {
-    fieldVerification("nome", dados.nome.value, 1);
-    fieldVerification("data", dados.data.value, 1);
-    fieldVerification("cidade", dados.cidade.value, 1);
-    fieldVerification("complemento", dados.complemento.value, 1);
-    fieldVerification("endereco", dados.endereco.value, 0);
-    fieldVerification("estado", dados.estado.value, 0);
-    fieldVerification("hemocentro", dados.hemocentro.value, 0);
-    fieldVerification("horario", dados.horario.value, 0);
-    if (
-      dados.nome.hasError === true ||
-      dados.data.hasError === true ||
-      dados.cidade.hasError === true ||
-      dados.complemento.hasError === true ||
-      dados.endereco.hasError === true ||
-      dados.estado.hasError === true ||
-      dados.hemocentro.hasError === true ||
-      dados.horario.hasError === true ||
-      document.querySelector("#DataFinalCampanha").value === "" ||
-      document.querySelector("#DataInicioCampanha").value === ""
-    ) {
-      Toast.fire({
-        icon: "error",
-        title: "Verifique se todos os campos foram digitados corretamente.",
+  const updateCampanhas = async () => {
+    const docUpdate = doc(db, "campanha", props.location.state.id);
+    await updateDoc(docUpdate, {
+      nome: dados.nome.value,
+      dataInicial: dados.dataInicial.value,
+      dataFinal: dados.dataFinal.value,
+      cidade: dados.cidade.value,
+      complemento: dados.complemento.value,
+      horario: dados.horario.value,
+      hemocentro: dados.hemocentro.value,
+      endereco: dados.endereco.value,
+      estado: dados.estado.value,
+      observacao: dados.observacao.value,
+    })
+      .then(() => {
+        Toast.fire({
+          icon: "sucess",
+          title: "Campanha alterada com sucesso.",
+        });
+        window.location.href = "/hemocentro";
+      })
+      .catch((error) => {
+        console.log(error);
+        Toast.fire({
+          icon: "error",
+          title:
+            "Não conseguimos recuperar alguns dados. Por favor atualize a página e tente novamente.",
+        });
       });
-    } else {
-      fetchCampanhas();
-    }
-  };
-
-  const handleChangeDados = (data, field, value) => {
-    setDados((prevState) => ({
-      ...prevState,
-      [data]: {
-        ...prevState[data],
-        [field]: value,
-      },
-    }));
-    return;
   };
 
   return (
     <div className="font-montserrat p-relative" id="CadastroCampanha">
       <Topbar />
       <div className="mt-5 white-space">
-        <Inicio text={"Cadastre uma campanha"} ilustracao={false} />
+        <Inicio
+          text={
+            props.location.state.id
+              ? "Altere uma campanha"
+              : "Cadastre uma campanha"
+          }
+          ilustracao={false}
+        />
       </div>
-      <FieldCampanha
-        ref={childRef}
-        hemocentro={props.location.state.props}
-        setDados={setDados}
-      />
+      {props.location.state.id ? (
+        <FieldCampanha ref={childRef} campanha={campanha} setDados={setDados} />
+      ) : (
+        <FieldCampanha
+          ref={childRef}
+          hemocentro={props.location.state.props}
+          setDados={setDados}
+        />
+      )}
       <div className="col text-end mt-4 mb-3 container">
-        <button
-          className="btn-red f-09"
-          onClick={async () => {
-            beforeSave();
-          }}
-        >
-          Cadastrar campanha
-        </button>
+        {props.location.state.id ? (
+          <button
+            className="btn-red f-09"
+            onClick={() => {
+              beforeSave();
+            }}
+          >
+            Salvar
+          </button>
+        ) : (
+          <button
+            className="btn-red f-09"
+            onClick={() => {
+              beforeSave();
+            }}
+          >
+            Cadastrar campanha
+          </button>
+        )}
       </div>
       <Footer />
     </div>

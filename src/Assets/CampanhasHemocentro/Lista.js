@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import deleteImg from "../Img/delete.png";
-import editImg from "../Img/pencil.png";
 import SearchBar from "./Search";
 import {
   collection,
@@ -52,7 +50,7 @@ const Lista = (props) => {
     <div className="font-montserrat container mt-3">
       <div className="col text-end">
         <Link
-          to={{pathname: "/cadastro-campanha", state: {props: props.id}}}
+          to={{pathname: "/campanha", state: {props: props.id}}}
           className="f-08 text-center c-pointer mt-2"
         >
           {" "}

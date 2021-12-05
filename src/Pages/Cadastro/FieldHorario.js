@@ -10,6 +10,13 @@ const FieldHorario = (props) => {
     { dia: "Sábado", das: "", as: "" },
     { dia: "Domingo", das: "", as: "" },
   ]);
+  
+
+  useEffect(() => {
+    if (props.horario) {
+      setHorario(props.horario);
+    }
+  }, [props.horario]);
 
   const handleChangeHorario = (field, value, position) => {
     setHorario(() =>
@@ -48,6 +55,7 @@ const FieldHorario = (props) => {
             id="DasSegunda"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[0].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 0)}
           />
           -
@@ -56,6 +64,7 @@ const FieldHorario = (props) => {
             id="AsSegunda"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[0].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 0)}
           />
         </div>
@@ -68,6 +77,7 @@ const FieldHorario = (props) => {
             id="DasTerça"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[1].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 1)}
           />
           -
@@ -76,6 +86,7 @@ const FieldHorario = (props) => {
             id="AsTerça"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[1].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 1)}
           />
         </div>
@@ -88,6 +99,7 @@ const FieldHorario = (props) => {
             id="DasQuarta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[2].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 2)}
           />
           -
@@ -96,6 +108,7 @@ const FieldHorario = (props) => {
             id="AsQuarta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[2].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 2)}
           />
         </div>
@@ -108,6 +121,7 @@ const FieldHorario = (props) => {
             id="DasQuinta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[3].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 3)}
           />
           -
@@ -116,6 +130,7 @@ const FieldHorario = (props) => {
             id="AsQuinta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[3].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 3)}
           />{" "}
         </div>
@@ -128,6 +143,7 @@ const FieldHorario = (props) => {
             id="DasSexta"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[4].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 4)}
           />
           -
@@ -136,6 +152,7 @@ const FieldHorario = (props) => {
             id="AsSexta"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[4].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 4)}
           />{" "}
         </div>
@@ -150,6 +167,7 @@ const FieldHorario = (props) => {
             id="DasSabado"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[5].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 5)}
           />
           -
@@ -158,6 +176,7 @@ const FieldHorario = (props) => {
             id="AsSabado"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[5].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 5)}
           />{" "}
         </div>
@@ -170,6 +189,7 @@ const FieldHorario = (props) => {
             id="DasDomingo"
             className="form-control f-09 w-25 mr-1r"
             placeholder="Das"
+            value={horario[6].das}
             onChange={(e) => handleChangeHorario("das", e.target.value, 6)}
           />
           -
@@ -178,6 +198,7 @@ const FieldHorario = (props) => {
             id="AsDomingo"
             className="form-control f-09 w-25 ml-1r mr-1r"
             placeholder="às"
+            value={horario[6].as}
             onChange={(e) => handleChangeHorario("as", e.target.value, 6)}
           />{" "}
         </div>

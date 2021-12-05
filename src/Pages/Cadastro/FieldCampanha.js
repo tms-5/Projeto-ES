@@ -16,10 +16,15 @@ const FieldCampanha = forwardRef((props, ref) => {
       value: "",
       errorMessage: "Campo não pode ficar em branco.",
     },
-    data: {
+    dataInicial: {
       hasError: false,
       value: "",
-      errorMessage: "Data da campanha não pode ficar vazia.",
+      errorMessage: "Data inicial campanha não pode ficar vazia.",
+    },
+    dataFinal: {
+      hasError: false,
+      value: "",
+      errorMessage: "Data final da campanha não pode ficar vazia.",
     },
     cidade: {
       hasError: false,
@@ -38,7 +43,7 @@ const FieldCampanha = forwardRef((props, ref) => {
     },
     hemocentro: {
       hasError: false,
-      value: props.hemocentro,
+      value: "",
       errorMessage: "",
     },
     complemento: {
@@ -48,7 +53,7 @@ const FieldCampanha = forwardRef((props, ref) => {
     },
     observacao: {
       hasError: false,
-      value: "",
+      value: " ",
       errorMessage: "",
     },
     horario: {
@@ -56,6 +61,9 @@ const FieldCampanha = forwardRef((props, ref) => {
       value: horario,
       errorMessage: "Campos dos horários não podem ficar em branco.",
     },
+  });
+  const [campanha, setCampanha] = useState({
+    horario: [{}, {}, {}, {}, {}, {}, {}],
   });
 
   useEffect(() => {
@@ -84,6 +92,12 @@ const FieldCampanha = forwardRef((props, ref) => {
     handleChangeDados("estado", "value", endereco.uf);
   }, [endereco]);
 
+  useEffect(() => {
+    if (props.campanha) {
+      setCampanha(props.campanha);
+    }
+  }, [props.campanha]);
+
   const handleChangeDados = (data, field, value) => {
     setDados((prevState) => ({
       ...prevState,
@@ -103,6 +117,22 @@ const FieldCampanha = forwardRef((props, ref) => {
     }
   };
 
+  useEffect(() => {
+    teste();
+  }, [campanha]);
+
+  const teste = () => {
+    handleChangeDados("nome", "value", campanha.nome);
+    handleChangeDados("endereco", "value", campanha.endereco);
+    handleChangeDados("dataInicial", "value", campanha.dataInicial);
+    handleChangeDados("dataFinal", "value", campanha.dataFinal);
+    handleChangeDados("complemento", "value", campanha.complemento);
+    handleChangeDados("observacao", "value", campanha.observacao);
+    handleChangeDados("nome", "value", campanha.nome);
+    handleChangeDados("estado", "value", campanha.estado);
+    handleChangeDados("hemocentro", "value", campanha.hemocentro);
+  };
+
   return (
     <>
       <div className="container" style={{ minHeight: "58vh" }}>
@@ -113,6 +143,7 @@ const FieldCampanha = forwardRef((props, ref) => {
               type="text"
               className="form-control f-09"
               placeholder="Digite o nome da campanha"
+              value={dados.nome.value}
               onChange={(e) =>
                 handleChangeDados("nome", "value", e.target.value)
               }
@@ -128,41 +159,39 @@ const FieldCampanha = forwardRef((props, ref) => {
             <div>Data da campanha</div>
             <div className="d-flex align-center">
               <input
-                type="date"
+                placeholder={dados.dataInicial.value}
+                type="text"
                 className="form-control f-09 w-50 mr-1r"
-                placeholder="Digite o complemento do endereço"
-                id="DataInicioCampanha"
+                onFocus={(e) => {
+                  e.currentTarget.type = "date";
+                  e.currentTarget.focus();
+                }}
                 onBlur={(e) =>
                   handleChangeDados(
-                    "data",
+                    "dataInicial",
                     "value",
                     new Date(e.target.value).toLocaleDateString("pt-BR", {
                       timeZone: "UTC",
-                    }) +
-                      " - " +
-                      new Date(
-                        document.querySelector("#DataFinalCampanha").value
-                      ).toLocaleDateString("pt-BR", { timeZone: "UTC" })
+                    })
                   )
                 }
               />
               até
               <input
-                type="date"
+                type="text"
                 className="form-control f-09 w-50 ml-1r"
-                placeholder="Digite o complemento do endereço"
-                id="DataFinalCampanha"
+                placeholder={dados.dataFinal.value}
+                onFocus={(e) => {
+                  e.currentTarget.type = "date";
+                  e.currentTarget.focus();
+                }}
                 onBlur={(e) =>
                   handleChangeDados(
-                    "data",
+                    "dataFinal",
                     "value",
-                    new Date(
-                      document.querySelector("#DataInicioCampanha").value
-                    ).toLocaleDateString("pt-BR", { timeZone: "UTC" }) +
-                      " - " +
-                      new Date(e.target.value).toLocaleDateString("pt-BR", {
-                        timeZone: "UTC",
-                      })
+                    new Date(e.target.value).toLocaleDateString("pt-BR", {
+                      timeZone: "UTC",
+                    })
                   )
                 }
               />
@@ -196,17 +225,33 @@ const FieldCampanha = forwardRef((props, ref) => {
             <input
               type="text"
               className="form-control f-09"
-              value={endereco.logradouro}
+              value={dados.endereco.value}
               readOnly
             />
           </div>
         </div>
         <div className="row mt-4">
           <div className="col">
+            <div>Estado</div>
+            <input
+              type="text"
+              className="form-control f-09"
+              value={dados.estado.value}
+              onChange={(e) =>
+                handleChangeDados("estado", "value", e.target.value)
+              }
+              onBlur={(e) => {
+                fieldVerification("estado", e.target.value, 1);
+              }}
+              readOnly
+            />
+          </div>
+          <div className="col">
             <div>Complemento do endereço</div>
             <input
               type="text"
               className="form-control f-09"
+              value={dados.complemento.value}
               onChange={(e) =>
                 handleChangeDados("complemento", "value", e.target.value)
               }
@@ -215,23 +260,27 @@ const FieldCampanha = forwardRef((props, ref) => {
               }}
             />
           </div>
+        </div>
+        <div className="row mt-4">
           <div className="col">
             <div>Observação</div>
             <input
               type="text"
               className="form-control f-09"
+              value={dados.observacao.value}
               onChange={(e) =>
                 handleChangeDados("observacao", "value", e.target.value)
               }
-              onBlur={(e) => {
-                fieldVerification("observacao", e.target.value, 1);
-              }}
             />
           </div>
         </div>
         <div className="row mt-4">
           <div>Horário da campanha</div>
-          <FieldHorario setHorario={setHorario} />
+          {props.campanha ? (
+            <FieldHorario setHorario={setHorario} horario={campanha.horario} />
+          ) : (
+            <FieldHorario setHorario={setHorario} />
+          )}
         </div>
       </div>
     </>

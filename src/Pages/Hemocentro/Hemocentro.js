@@ -2,7 +2,6 @@ import Lista from "../../Assets/CampanhasHemocentro/Lista";
 import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
 import Topbar from "../../Components/Topbar/Topbar";
-import "./Hemocentro.css";
 
 export default function Hemocentro() {
   let data = require("../../Assets/JSON/Hemocentros.json");  
