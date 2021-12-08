@@ -1,6 +1,8 @@
 import ViaCep from "react-via-cep/dist/components/ViaCep";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import FieldHorario from "./FieldHorario";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
 
 const FieldCampanha = forwardRef((props, ref) => {
   const [endereco, setEndereco] = useState({
@@ -132,6 +134,13 @@ const FieldCampanha = forwardRef((props, ref) => {
     handleChangeDados("estado", "value", campanha.estado);
     handleChangeDados("hemocentro", "value", campanha.hemocentro);
   };
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Caso a campanha não funcione em algum dia, clique no X à direita de cada
+      campo.
+    </Tooltip>
+  );
 
   return (
     <>
@@ -275,7 +284,25 @@ const FieldCampanha = forwardRef((props, ref) => {
           </div>
         </div>
         <div className="row mt-4">
-          <div>Horário da campanha</div>
+          <div>
+            Horário da campanha
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 400 }}
+              overlay={renderTooltip}
+            >
+              <Button
+                variant="success"
+                className="b-none bg-transparent c-black f-07 ml-1r"
+                style={{
+                  border: "1px solid gray",
+                  borderRadius: "50px",
+                }}
+              >
+                ?
+              </Button>
+            </OverlayTrigger>
+          </div>
           {props.campanha ? (
             <FieldHorario setHorario={setHorario} horario={campanha.horario} />
           ) : (

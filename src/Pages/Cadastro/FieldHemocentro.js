@@ -11,7 +11,7 @@ import InputMask from "react-input-mask";
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
     Informe somente os horários de doação de sangue disponível. Caso o
-    estabelecimento não esteja funcionando, preencha com apenas um hífen"-".
+    estabelecimento não esteja funcionando, clique no X à direita dos campos.
   </Tooltip>
 );
 

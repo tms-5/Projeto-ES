@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./Search";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import Campanha from "./Campanha";
 import { Link } from "react-router-dom";
@@ -50,7 +45,7 @@ const Lista = (props) => {
     <div className="font-montserrat container mt-3">
       <div className="col text-end">
         <Link
-          to={{pathname: "/campanha", state: {props: props.id}}}
+          to={{ pathname: "/campanha", state: { hemocentro: props.id } }}
           className="f-08 text-center c-pointer mt-2"
         >
           {" "}

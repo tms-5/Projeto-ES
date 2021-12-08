@@ -41,7 +41,9 @@ const CadastroCampanha = (props) => {
     },
     hemocentro: {
       hasError: false,
-      value: props.hemocentro,
+      value: props.location.state.hemocentro
+        ? props.location.state.hemocentro
+        : props.hemocentro,
       errorMessage: "",
     },
     complemento: {
@@ -78,6 +80,12 @@ const CadastroCampanha = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (props.location.state.hemocentro) {
+      dados.hemocentro.value = props.location.state.hemocentro;
+    }
+  });
+
   const fieldVerification = (field, value, size) => {
     if (value === "" || value === " " || value.length <= size) {
       handleChangeDados(field, "hasError", true);
@@ -94,7 +102,7 @@ const CadastroCampanha = (props) => {
     fieldVerification("complemento", dados.complemento.value, 1);
     fieldVerification("endereco", dados.endereco.value, 0);
     fieldVerification("estado", dados.estado.value, 0);
-    fieldVerification("hemocentro", dados.hemocentro.value, 0);
+    fieldVerification("hemocentro", dados.hemocentro.value, 1);
     fieldVerification("horario", dados.horario.value, 0);
     if (
       dados.nome.hasError === true ||
@@ -186,7 +194,7 @@ const CadastroCampanha = (props) => {
             "Não conseguimos recuperar alguns dados. Por favor atualize a página e tente novamente.",
         });
       });
-  };
+  };  
 
   return (
     <div className="font-montserrat p-relative" id="CadastroCampanha">
