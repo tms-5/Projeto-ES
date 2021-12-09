@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Estado from "../../Assets/Estados/Estados";
-import API from "../../Axios/API";
 import Toast from "../../Assets/Toast/Toast.js";
+import { doc, setDoc, collection } from "firebase/firestore";
+import db from "../../Axios/Firebase";
 
 const FieldUsuario = () => {
   const [city, setCity] = useState("");
@@ -66,8 +67,8 @@ const FieldUsuario = () => {
     handleChangeDados("cidade", "value", city);
   }, [city]);
 
-  const fetchCampanhas = async () => {
-    await API.post("/usuario", {
+  const fetchUsuario = async () => {
+    await setDoc(doc(collection(db, "usuarios")), {
       nome: dados.nome.value,
       email: dados.email.value,
       senha: dados.senha.value,
@@ -75,13 +76,13 @@ const FieldUsuario = () => {
       idade: dados.idade.value,
       cidade: dados.cidade.value,
     })
-      .then((resp) => {
+      .then(() => {
         Toast.fire({
           icon: "sucess",
           title: "Usuário cadastrado com sucesso.",
         });
       })
-      .catch((erro) => {
+      .catch(() => {
         Toast.fire({
           icon: "error",
           title:
@@ -94,7 +95,7 @@ const FieldUsuario = () => {
     fieldVerification("email", dados.email.value, 1);
     fieldVerification("senha", dados.senha.value, 1);
     fieldVerification("sexo", dados.sexo.value, 1);
-    fieldVerification("idade", dados.idade.value, 1);    
+    fieldVerification("idade", dados.idade.value, 1);
     fieldVerification("cidade", dados.cidade.value, 1);
     if (
       dados.nome.hasError === true ||
@@ -109,7 +110,7 @@ const FieldUsuario = () => {
         title: "Verifique se todos os campos foram digitados certos.",
       });
     } else {
-      fetchCampanhas();
+      fetchUsuario();
     }
   };
   return (
@@ -194,8 +195,10 @@ const FieldUsuario = () => {
       </div>
       <Estado setCity={setCity} />
       {dados.cidade.hasError ? (
-          <div className="f-07 fw-bolder text-danger">{dados.cidade.errorMessage}</div>
-        ) : null}
+        <div className="f-07 fw-bolder text-danger">
+          {dados.cidade.errorMessage}
+        </div>
+      ) : null}
       <button className="btn-red p-1 mt-4" onClick={beforeSave}>
         Cadastrar
       </button>
