@@ -16,7 +16,6 @@ const options = {
   overlayClassName: "overlay-custom-class-name",
 };
 
-
 const Campanha = (props) => {
   async function deletarCampanha(id) {
     await deleteDoc(doc(db, "campanha", id));
