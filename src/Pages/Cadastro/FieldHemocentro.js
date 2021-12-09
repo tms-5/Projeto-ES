@@ -22,7 +22,6 @@ const FieldHemocentro = () => {
     localidade: "",
     uf: "",
   });
-  const [validado, setValidado] = useState(false);
   const [horario, setHorario] = useState([]);
   const [dados, setDados] = useState({
     nome: {
@@ -95,7 +94,17 @@ const FieldHemocentro = () => {
 
   useEffect(() => {
     handleChangeDados("horario", "value", horario);
-  }, [validado]);
+  }, [horario]);
+
+  const emptyValidation = () => {
+    let aux = false;
+    horario.map((content) => {
+      if (content.das === "" || content.as === "") {
+        aux = true;
+      }
+    });
+    return handleChangeDados("horario", "hasError", aux);
+  };
 
   const emailValidator = (email) => {
     var re = /\S+@\S+\.\S+/;
@@ -164,6 +173,7 @@ const FieldHemocentro = () => {
   };
 
   const beforeSave = () => {
+    emptyValidation();
     fieldVerification("nome", dados.nome.value, 1);
     fieldVerification("email", dados.email.value, 1);
     fieldVerification("senha", dados.senha.value, 1);
@@ -183,8 +193,7 @@ const FieldHemocentro = () => {
       dados.endereco.hasError === true ||
       dados.cidade.hasError === true ||
       dados.estado.hasError === true ||
-      dados.complemento.hasError === true ||
-      validado === false
+      dados.complemento.hasError === true 
     ) {
       Toast.fire({
         icon: "error",
@@ -377,7 +386,7 @@ const FieldHemocentro = () => {
         {dados.horario.hasError ? (
           <div className="f-07 text-danger">{dados.horario.errorMessage}</div>
         ) : null}
-        <FieldHorario setHorario={setHorario} setValidado={setValidado} />
+        <FieldHorario setHorario={setHorario} />
       </div>
 
       <button className="btn-red p-1 mt-4" onClick={() => beforeSave()}>
