@@ -3,7 +3,7 @@
 
 <h1>Overview</h1>
 
-<h3>Hemoloc é uma plataforma web para informar aos usuários onde tem campanha de doação de sangue próxima à cidade que ele reside.
+<h3>Hemoloc é uma plataforma web para informar aos usuários onde tem campanha de doação de sangue próxima na cidade que ele reside.
 Há 2 tipos de stakeholders no projeto, os usuários finais e os hemocentros que cadastram a campanha no website.</h3>
 <a href="https://projeto-es.vercel.app/">Deploy do projeto.</a>
 
