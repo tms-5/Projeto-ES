@@ -7,6 +7,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import AuthContext from "../../contexts/auth";
 import { doc, getDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
+import Toast from "../../Assets/Toast/Toast";
 
 function Login({ history }) {
   const [email, setEmail] = useState("");
@@ -23,9 +24,12 @@ function Login({ history }) {
           docSnap.exists() ? history.push("/") : history.push("/hemocentro");
         }
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
+      .catch(() => {
+        Toast.fire({
+          icon: "error",
+          title:
+            "Verifique se suas credenciais de acesso foram digitadas corretamente.",
+        });
       });
   };
 
