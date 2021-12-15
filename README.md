@@ -1,5 +1,5 @@
 # HEMO LOC
-![logo_hemoloc] (https://github.com/tms-5/Projeto-ES/blob/main/src/Assets/Img/hemo.loc.png)
+![logo_hemoloc](https://github.com/tms-5/Projeto-ES/blob/main/src/Assets/Img/hemo.loc.png)
 
 <h1>Overview</h1>
 
