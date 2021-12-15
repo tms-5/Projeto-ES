@@ -6,7 +6,7 @@ import blood1 from "../Img/blood-1.png";
 
 export default function Inicio(props) {
   return (
-    <div className="mt-5 mb-3">
+    <div className="mt-5r mb-3">
       <div className="container">
         <img
           src={blood}

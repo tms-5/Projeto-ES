@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import Topbar from "../../Components/Topbar/Topbar.js";
 import Footer from "../../Components/Footer/Footer";
 import Inicio from "../../Assets/Inicio/Inicio";
 import CampanhasInicio from "../../Assets/CampanhasInicio/CampanhasInicio";
+import { useContext } from "react";
+import AuthContext from "../../contexts/auth.js";
+import UserTopbar from "../../Components/Topbar/UserTopbar.js";
+import AcessoTopbar from "../../Components/Topbar/AcessoTopbar";
 
 export default function Index() {
-  const [topics] = useState([
-    { name: "Início", index: "0", href: "/" },
-    { name: "O que é o hemo.loc?", index: "1", href: "/sobre" },
-    { name: "Posso doar sangue?", index: "2", href: "/doar-sangue" },
-    { name: "Cadastre-se", index: "3", href: "/cadastro" },
-  ]);
+  const { currentUser } = useContext(AuthContext);
   return (
-    <div className="font-montserrat p-relative">
-      <Topbar links={topics}/>
+    <>
+      {currentUser ? <UserTopbar /> : <AcessoTopbar />}
       <Inicio
         text={"EM TODOS OS LUGARES, PARA TODO MUNDO."}
         ilustracao={true}
@@ -22,6 +19,6 @@ export default function Index() {
         <CampanhasInicio />
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

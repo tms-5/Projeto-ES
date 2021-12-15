@@ -1,6 +1,5 @@
 # HEMO LOC
 ![logo_hemoloc] (https://github.com/tms-5/Projeto-ES/blob/main/src/Assets/Img/hemo.loc.png)
-![Badge](https://img.shields.io/badge/label=React&message=17.0.2&color=green)
 
 <h1>Overview</h1>
 

@@ -1,23 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../Assets/Img/hemo.loc.png";
 import gota from "../../Assets/Img/blood.png";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import AuthContext from "../../contexts/auth";
+import { doc, getDoc } from "firebase/firestore";
+import db from "../../Axios/Firebase";
 
-function Login() {
+function Login({ history }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const { nivelUser } = useContext(AuthContext);
 
-  const auth = getAuth();
   const autenticar = async (email, password) => {
+    const auth = getAuth();
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(async () => {
+        const docRef = doc(db, "usuarios", email);
+        const docSnap = await getDoc(docRef);
+        {
+          docSnap.exists() ? history.push("/") : history.push("/hemocentro");
+        }
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
       });
@@ -55,7 +61,7 @@ function Login() {
           </div>
           <button
             className="btn-red p-1 mt-4"
-            onClick={autenticar(email, senha)}
+            onClick={() => autenticar(email, senha)}
           >
             Entrar
           </button>
