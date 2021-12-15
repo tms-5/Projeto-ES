@@ -33,11 +33,11 @@ Esse projeto foi desenvolvido para a cadeira de Engenharia de Software do curso 
 - [x] Atualização de campanha
 - [x] Exclusão de campanha
 - [ ] Login
-- [ ] Logout
+- [x] Logout
 - [ ] Atualização de usuário
 - [ ] Atualização de hemocentro
-- [ ] Excusão de usuário
-- [ ] Excusão de Hemocentro
+- [ ] Exclusão de usuário
+- [ ] Exclusão de Hemocentro
 
 <h2> Overview do  Projeto </h2>
 
