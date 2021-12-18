@@ -6,6 +6,7 @@ import CampanhasInicio from "../../Assets/CampanhasInicio/CampanhasInicio";
 import {app} from "../../Axios/Firebase";
 import {getMessaging, getToken} from "firebase/messaging"
 
+
 export default function Index() {
   const [topics] = useState([
     { name: "Início", index: "0", href: "/" },
@@ -24,8 +25,6 @@ export default function Index() {
       }
     )
   }, [])
-  
-
 
   
   return (

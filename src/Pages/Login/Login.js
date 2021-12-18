@@ -9,6 +9,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
+
   const auth = getAuth();
   const autenticar = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password)
