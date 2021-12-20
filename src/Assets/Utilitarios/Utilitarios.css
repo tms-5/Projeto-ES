@@ -73,6 +73,9 @@
 .m-inherit {
   margin: inherit;
 }
+.mt-5r{
+  margin-top: 5rem !important;
+}
 
 /*Padding*/
 .pr-2r {

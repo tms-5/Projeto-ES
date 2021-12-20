@@ -3,6 +3,8 @@ import Estado from "../../Assets/Estados/Estados";
 import Toast from "../../Assets/Toast/Toast.js";
 import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { Redirect } from "react-router";
 
 const FieldUsuario = () => {
   const [city, setCity] = useState("");
@@ -68,7 +70,7 @@ const FieldUsuario = () => {
   }, [city]);
 
   const fetchUsuario = async () => {
-    await setDoc(doc(collection(db, "usuarios")), {
+    await setDoc(doc(db, "usuarios", dados.email.value), {
       nome: dados.nome.value,
       email: dados.email.value,
       senha: dados.senha.value,
@@ -77,6 +79,15 @@ const FieldUsuario = () => {
       cidade: dados.cidade.value,
     })
       .then(() => {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(
+          auth,
+          dados.email.value,
+          dados.senha.value
+        ).then((userCredential) => {
+          const user = userCredential.user;
+          <Redirect to={{ pathname: "/" }} />;
+        });
         Toast.fire({
           icon: "sucess",
           title: "Usuário cadastrado com sucesso.",

@@ -1,54 +1,52 @@
-.topbar-detail{
-    border-bottom: 50px solid rgb(255, 255, 255);
-    border-right: 50px solid transparent;
-    height: 50px;
+.topbar-detail {
+  border-bottom: 50px solid rgb(255, 255, 255);
+  border-right: 50px solid transparent;
+  height: 50px;
 }
-.topbar-router{
-    width: 85%;
-    max-width: 1500px;
+.topbar-router {
+  width: 85%;
+  max-width: 1500px;
 }
-.topbar-router > div{
-    color: white;
-    width: auto;
-    align-self: center;
+.topbar-router > div {
+  color: white;
+  width: auto;
+  align-self: center;
 }
-#TopbarDesktop{
-    overflow-y: hidden;
+.TopbarDesktop {
+  overflow-y: hidden;
 }
-.menu-mobile{
-    position: fixed;
-    margin-top: 50px !important;    
-    opacity: 0;
-    visibility: hidden;
-    height: 0%;
-    transition: opacity 1s, visibility 1s, height 1s;
-    overflow: hidden;
-    z-index: 999;
+.menu-mobile {
+  position: fixed;
+  margin-top: 50px !important;
+  opacity: 0;
+  visibility: hidden;
+  height: 0%;
+  transition: opacity 1s, visibility 1s, height 1s;
+  overflow: hidden;
+  z-index: 999;
 }
-.show{
-    opacity: 1 ;
-    visibility: visible;
-    height: auto;
+.show {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
 }
-#TopbarMobile > .row{
-    height: 50px;
+.TopbarMobile > .row {
+  height: 50px;
 }
 
-@media screen and (min-width: 900px){
-    #TopbarDesktop{
-        display: flex; 
-    }
-    #TopbarMobile{
-        display: none; 
-    }
-
+@media screen and (min-width: 900px) {
+  .TopbarDesktop {
+    display: flex;
+  }
+  .TopbarMobile {
+    display: none !important;
+  }
 }
-@media screen and (max-width: 900px){
-    #TopbarDesktop{
-        display: none; 
-    }
-    #TopbarMobile{
-        display: flex; 
-    }
-
+@media screen and (max-width: 900px) {
+  .TopbarDesktop {
+    display: none !important;
+  }
+  .TopbarMobile {
+    display: flex;
+  }
 }
