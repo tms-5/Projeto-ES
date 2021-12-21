@@ -186,7 +186,7 @@ const CadastroCampanha = (props) => {
       app_url: "https://projeto-es.vercel.app"
         
       }
-    await API.post("/", data)
+    await API.post("/notifications", data)
   }
 
   const updateCampanhas = async () => {
@@ -203,6 +203,9 @@ const CadastroCampanha = (props) => {
       estado: dados.estado.value,
       observacao: dados.observacao.value,
     })
+      .then(() => {
+        fetchNotifications()
+      })
       .then(() => {
         Toast.fire({
           icon: "sucess",
