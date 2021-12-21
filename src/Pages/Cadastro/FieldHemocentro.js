@@ -7,6 +7,7 @@ import Button from "@restart/ui/esm/Button";
 import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import InputMask from "react-input-mask";
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
 
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
@@ -145,6 +146,14 @@ const FieldHemocentro = () => {
           hemocentro: dados.abreviacao.value,
           observacao: "",
         })
+          .then(() => {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(
+              auth,
+              dados.email.value,
+              dados.senha.value
+            )
+          })
           .then(() => {
             Toast.fire({
               icon: "sucess",

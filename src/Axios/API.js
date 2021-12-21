@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:3001/",
+    baseURL: "https://onesignal.com/api/v1/notifications",
     timeout: 10000
 });

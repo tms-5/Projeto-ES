@@ -6,6 +6,7 @@ import Toast from "../../Assets/Toast/Toast.js";
 import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import FieldCampanha from "./FieldCampanha";
+import axios from "axios";
 
 const CadastroCampanha = (props) => {
   const [dados, setDados] = useState({
@@ -154,6 +155,7 @@ const CadastroCampanha = (props) => {
           title: "Campanha cadastrado com sucesso.",
         });
         window.location.href = "/hemocentro";
+        
       })
       .catch((error) => {
         console.log(error);
@@ -164,7 +166,6 @@ const CadastroCampanha = (props) => {
         });
       });
   };
-
   const updateCampanhas = async () => {
     const docUpdate = doc(db, "campanha", props.location.state.id);
     await updateDoc(docUpdate, {

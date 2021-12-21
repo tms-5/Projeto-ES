@@ -5,22 +5,16 @@ import { useContext, useEffect } from "react";
 import AuthContext from "../../contexts/auth.js";
 import UserTopbar from "../../Components/Topbar/UserTopbar.js";
 import AcessoTopbar from "../../Components/Topbar/AcessoTopbar";
-import {app} from "../../Axios/Firebase"
-import {getMessaging,getToken} from "firebase/messaging"
+import OneSignal from "react-onesignal";
 
 export default function Index() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    const messaging = getMessaging(app);
-    getToken(messaging, {vapidKey:"BF-_98NLXUdxtuAvkTM_IFqEsHUIb1ibQi5y4RN0bIzErdc_-hjLMOmIElRxd_n5D7tVET-FUn7X0DGELL1gXeE"}).then(
-      (currentToken) => {
-        if(currentToken) {
-          console.log(currentToken);
-        }
-      }
-    )
+    OneSignal.init({appId: 'd73b7b9e-d529-4012-b1b7-e8532b9fc140'})
   }, [])
+
+  
   return (
     <>
       {currentUser ? <UserTopbar /> : <AcessoTopbar />}
