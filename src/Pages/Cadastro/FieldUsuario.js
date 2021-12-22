@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import Estado from "../../Assets/Estados/Estados";
 import Toast from "../../Assets/Toast/Toast.js";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { Redirect } from "react-router";
-import OneSignal from "react-onesignal";
 
 const FieldUsuario = () => {
-    const [city, setCity] = useState("");
+  const [city, setCity] = useState("");
   const [dados, setDados] = useState({
     nome: {
       hasError: false,
@@ -71,7 +69,6 @@ const FieldUsuario = () => {
   }, [city]);
 
   const fetchUsuario = async () => {
-    await OneSignal.sendTag("cidades", city);
     await setDoc(doc(db, "usuarios", dados.email.value), {
       nome: dados.nome.value,
       email: dados.email.value,
@@ -86,8 +83,10 @@ const FieldUsuario = () => {
           auth,
           dados.email.value,
           dados.senha.value
-        );
-        window.location.href = "/";
+        ).then((userCredential) => {
+          const user = userCredential.user;
+          window.location.href = "/";
+        });
         Toast.fire({
           icon: "sucess",
           title: "Usuário cadastrado com sucesso.",
