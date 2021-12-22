@@ -88,6 +88,7 @@ const FieldUsuario = () => {
           dados.senha.value
         ).then((userCredential) => {
           const user = userCredential.user;
+          console.log(user);
           <Redirect to={{ pathname: "/" }} />;
         });
         Toast.fire({
