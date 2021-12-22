@@ -6,16 +6,16 @@ import Hemocentro from "./Pages/Hemocentro/Hemocentro.js";
 import Index from "./Pages/Index/Index.js";
 import Login from "./Pages/Login/Login.js";
 import Sobre from "./Pages/Sobre/Sobre.js";
-import PrivateRoute from "./PrivateRoute";
 
 const Router = () => {
+  
   return (
     <BrowserRouter>
       <Route exact path="/" component={Index} />
       <Route exact path="/cadastrar" component={Cadastro} />
       <Route exact path="/campanha" component={CadastroCampanha} />
       <Route exact path="/login" component={Login} />
-      <PrivateRoute exact path="/hemocentro" component={Hemocentro} />
+      <Route exact path="/hemocentro" component={Hemocentro} />
       <Route exact path="/sobre" component={Sobre} />
       <Route exact path="/doar-sangue" component={FAQ} />
     </BrowserRouter>

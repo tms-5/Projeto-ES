@@ -4,7 +4,6 @@ import Toast from "../../Assets/Toast/Toast.js";
 import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { Redirect } from "react-router";
 
 const FieldUsuario = () => {
   const [city, setCity] = useState("");
@@ -69,8 +68,6 @@ const FieldUsuario = () => {
     handleChangeDados("cidade", "value", city);
   }, [city]);
 
- 
-
   const fetchUsuario = async () => {
     await setDoc(doc(db, "usuarios", dados.email.value), {
       nome: dados.nome.value,
@@ -88,8 +85,7 @@ const FieldUsuario = () => {
           dados.senha.value
         ).then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          <Redirect to={{ pathname: "/" }} />;
+          window.location.href = "/";
         });
         Toast.fire({
           icon: "sucess",
@@ -104,7 +100,7 @@ const FieldUsuario = () => {
         });
       });
   };
-  
+
   const beforeSave = () => {
     fieldVerification("nome", dados.nome.value, 1);
     fieldVerification("email", dados.email.value, 1);
@@ -128,8 +124,6 @@ const FieldUsuario = () => {
       fetchUsuario();
     }
   };
-
-  
 
   return (
     <>

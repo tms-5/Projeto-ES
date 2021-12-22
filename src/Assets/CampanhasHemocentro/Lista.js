@@ -29,13 +29,14 @@ const Lista = (props) => {
         collection(db, "campanha"),
         where("hemocentro", "==", props.id)
       );
+      console.log(props.id);
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         handleChangeDados(doc.data(), doc.id);
       });
     }
     importQuery();
-  }, []);
+  }, [props.id]);
 
   const handleChangeDados = (data, id) => {
     setCampanha((prevState) => [...prevState, { data, id }]);

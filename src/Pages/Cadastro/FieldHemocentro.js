@@ -155,6 +155,7 @@ const FieldHemocentro = () => {
             )
           })
           .then(() => {
+            window.location.href = "/hemocentro";
             Toast.fire({
               icon: "sucess",
               title: "Campanha cadastrada com sucesso.",
