@@ -10,9 +10,8 @@ import db from "../../Axios/Firebase";
 
 export default function Hemocentro() {
   const { currentUser } = useContext(AuthContext);
-  const [logado, setLogado] = useState(false);
   const [email, setEmail] = useState("");
-  const [hemocentro, setHemocentro] = useState({ abreviacao: "" });
+  const [hemocentro, setHemocentro] = useState({abreviacao: ""});
 
   useEffect(() => {
     async function dadoHemocentro() {

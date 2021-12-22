@@ -6,7 +6,7 @@ import Toast from "../../Assets/Toast/Toast.js";
 import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import FieldCampanha from "./FieldCampanha";
-import fetchNotifications from '../../Services/Notification'
+import fetchNotifications from "../../Services/Notification";
 
 const CadastroCampanha = (props) => {
   const [dados, setDados] = useState({

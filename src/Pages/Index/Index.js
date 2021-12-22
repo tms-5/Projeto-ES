@@ -11,12 +11,11 @@ export default function Index() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    if(currentUser){
-       OneSignal.init({appId: 'fabd29de-c34b-4d54-b7a4-64d56d43c1f8'})
-    }   
-  }, [])
+    if (currentUser) {
+      OneSignal.init({ appId: "b2ae84cf-776e-4196-9eda-3d8a21e9513a" });
+    }
+  }, [currentUser]);
 
-  
   return (
     <>
       {currentUser ? <UserTopbar /> : <AcessoTopbar />}
