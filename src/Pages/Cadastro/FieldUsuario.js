@@ -5,13 +5,8 @@ import { doc, setDoc, collection } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { Redirect } from "react-router";
-import OneSignal from "react-onesignal";
 
 const FieldUsuario = () => {
-
-  useEffect(() => {
-    OneSignal.init({appId: 'd73b7b9e-d529-4012-b1b7-e8532b9fc140'})
-  }, [])
   const [city, setCity] = useState("");
   const [dados, setDados] = useState({
     nome: {
@@ -77,7 +72,6 @@ const FieldUsuario = () => {
  
 
   const fetchUsuario = async () => {
-    await  OneSignal.sendTag('cidades', city)
     await setDoc(doc(db, "usuarios", dados.email.value), {
       nome: dados.nome.value,
       email: dados.email.value,
