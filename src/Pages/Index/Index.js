@@ -11,7 +11,9 @@ export default function Index() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    OneSignal.init({appId: 'fabd29de-c34b-4d54-b7a4-64d56d43c1f8'})
+    if(currentUser){
+       OneSignal.init({appId: 'fabd29de-c34b-4d54-b7a4-64d56d43c1f8'})
+    }   
   }, [])
 
   
