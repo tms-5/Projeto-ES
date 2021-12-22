@@ -15,7 +15,7 @@ const Router = () => {
       <Route exact path="/cadastrar" component={Cadastro} />
       <Route exact path="/campanha" component={CadastroCampanha} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/hemocentro" component={Hemocentro} />
+      <PrivateRoute exact path="/hemocentro" component={Hemocentro} />
       <Route exact path="/sobre" component={Sobre} />
       <Route exact path="/doar-sangue" component={FAQ} />
     </BrowserRouter>

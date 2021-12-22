@@ -3,6 +3,8 @@ import logo from "../../Assets/Img/hemo.loc.png";
 import logoBranca from "../../Assets/Img/hemo.loc-branco.png";
 import menu from "../../Assets/Img/menu-branco.png";
 import "./Topbar.css";
+import { getAuth, signOut } from "firebase/auth";
+import { Redirect } from "react-router";
 
 const HemocentroTopbar = () => {
   return (
@@ -19,7 +21,7 @@ export const HemocentroTopbarDesktop = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        window.location.reload();
+        <Redirect to="/" />;
       })
       .catch((error) => {
         // An error happened.
@@ -52,8 +54,8 @@ export const HemocentroTopbarDesktop = () => {
             );
           })}
           <div>
-            <a href="/login">
-              <button className="btn-white">Entrar</button>
+            <a onClick={deslogar}>
+              <button className="btn-white">Sair</button>
             </a>
           </div>
         </div>
