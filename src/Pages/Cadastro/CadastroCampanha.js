@@ -150,7 +150,7 @@ const CadastroCampanha = (props) => {
       observacao: dados.observacao.value,
     })
       .then(() => {
-        fetchNotifications()
+        fetchNotifications();
       })
       .then(() => {
         Toast.fire({
@@ -158,7 +158,6 @@ const CadastroCampanha = (props) => {
           title: "Campanha cadastrado com sucesso.",
         });
         window.location.href = "/hemocentro";
-        
       })
       .catch((error) => {
         console.log(error);
@@ -174,20 +173,19 @@ const CadastroCampanha = (props) => {
     const data = {
       included_segments: ["Active Users"],
       app_id: "d73b7b9e-d529-4012-b1b7-e8532b9fc140",
-       headings: {
-        "pt": "Nova Campanha"
+      headings: {
+        pt: "Nova Campanha",
       },
       contents: {
-        "en": "test",
-        "pt": "Campanha na sua cidade"
+        en: "test",
+        pt: "Campanha na sua cidade",
       },
-      data: {custom_data: "Some_Data"},
+      data: { custom_data: "Some_Data" },
       web_url: "https://projeto-es.vercel.app",
-      app_url: "https://projeto-es.vercel.app"
-        
-      }
-    await API.post("/notifications", data)
-  }
+      app_url: "https://projeto-es.vercel.app",
+    };
+    await API.post("/notifications", data);
+  };
 
   const updateCampanhas = async () => {
     const docUpdate = doc(db, "campanha", props.location.state.id);
@@ -204,7 +202,7 @@ const CadastroCampanha = (props) => {
       observacao: dados.observacao.value,
     })
       .then(() => {
-        fetchNotifications()
+        fetchNotifications();
       })
       .then(() => {
         Toast.fire({
@@ -221,7 +219,7 @@ const CadastroCampanha = (props) => {
             "Não conseguimos recuperar alguns dados. Por favor atualize a página e tente novamente.",
         });
       });
-  };  
+  };
 
   return (
     <div className="font-montserrat p-relative" id="CadastroCampanha">
