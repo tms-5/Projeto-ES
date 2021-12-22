@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     async function conferirNivelUsuario() {
       const docRef = doc(db, "usuarios", currentUser.email);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap);
       if (docSnap.exists()) {
         setNivelUser("usuario");
       } else {

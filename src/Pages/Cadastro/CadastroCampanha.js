@@ -6,7 +6,7 @@ import Toast from "../../Assets/Toast/Toast.js";
 import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore";
 import db from "../../Axios/Firebase";
 import FieldCampanha from "./FieldCampanha";
-import API from "../../Axios/API";
+import fetchNotifications from '../../Services/Notification'
 
 const CadastroCampanha = (props) => {
   const [dados, setDados] = useState({
@@ -150,9 +150,6 @@ const CadastroCampanha = (props) => {
       observacao: dados.observacao.value,
     })
       .then(() => {
-        fetchNotifications();
-      })
-      .then(() => {
         Toast.fire({
           icon: "sucess",
           title: "Campanha cadastrado com sucesso.",
@@ -169,24 +166,6 @@ const CadastroCampanha = (props) => {
       });
   };
 
-  const fetchNotifications = async () => {
-    const data = {
-      included_segments: ["Active Users"],
-      app_id: "d73b7b9e-d529-4012-b1b7-e8532b9fc140",
-      headings: {
-        pt: "Nova Campanha",
-      },
-      contents: {
-        en: "test",
-        pt: "Campanha na sua cidade",
-      },
-      data: { custom_data: "Some_Data" },
-      web_url: "https://projeto-es.vercel.app",
-      app_url: "https://projeto-es.vercel.app",
-    };
-    await API.post("/notifications", data);
-  };
-
   const updateCampanhas = async () => {
     const docUpdate = doc(db, "campanha", props.location.state.id);
     await updateDoc(docUpdate, {
@@ -201,9 +180,6 @@ const CadastroCampanha = (props) => {
       estado: dados.estado.value,
       observacao: dados.observacao.value,
     })
-      .then(() => {
-        fetchNotifications();
-      })
       .then(() => {
         Toast.fire({
           icon: "sucess",
@@ -248,6 +224,7 @@ const CadastroCampanha = (props) => {
           <button
             className="btn-red f-09"
             onClick={() => {
+              fetchNotifications();
               beforeSave();
             }}
           >
@@ -257,6 +234,7 @@ const CadastroCampanha = (props) => {
           <button
             className="btn-red f-09"
             onClick={() => {
+              fetchNotifications();
               beforeSave();
             }}
           >

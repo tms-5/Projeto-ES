@@ -287,7 +287,6 @@ const FieldHemocentro = () => {
               / |-|_/g,
               ""
             );
-            console.log(val_length_without_dashes);
             fieldVerification("telefone", val_length_without_dashes, 11);
           }}
         />
